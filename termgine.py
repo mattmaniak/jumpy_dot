@@ -34,33 +34,11 @@ class Enemies:
 	def model():
 		print(UI.red_red + Enemies.width * "$", end = "" + UI.reset)
 
-	def space_above(timing):
-		UI.horizontal_border()
-		for i in range(UI.y - 4): # Space above enemies
-			print(UI.white_white + "#", end = "" + UI.reset) # Left, vertical border.
-
-			for i in range(UI.x - 2): # Single vertical space above Enemies.
-				print(UI.space, end = "")
-
-			print(UI.white_white + "#", end = "" + UI.reset) # Right, vertical border.
-
-#	def random_space():
-#		empty_area = randint(0, UI.y - 4) # Randomizing empty vertical area.
-
-#		for i in range(empty_area):
-#			print(UI.white_white + "#", end = "" + UI.reset) # Left, vertical border.
-
-#			for i in range(UI.x - 2):
-#				print(UI.space, end = "")
-
-#			print(UI.white_white + "#", end = "" + UI.reset) # Right, vertical border.
-
-#		return empty_area
 
 	def render():
-		Enemies.space_above()
+		UI.horizontal_border()
 
-		for i in range(0, UI.y - 4): # Window height.
+		for i in range(0, UI.y - 3): # Window height.
 			print(UI.white_white + "#", end = "" + UI.reset) # Left border.
 
 			# Random amount of spaces before the Enemy:
@@ -75,23 +53,6 @@ class Enemies:
 				print(UI.space, end = "")
 
 			print(UI.white_white + "#" + UI.reset) # Right border.
-
-		# This is the Enemy just above the Player.
-		# Split is required to implement position comparison.
-#		random_x_unique = randint(Enemies.width, UI.x - 2)
-
-#		print(UI.white_white + "#", end = "" + UI.reset)
-
-#		for i in range(Enemies.width, random_x_unique):
-#			print(UI.space, end = "")
-
-#		Enemies.model()
-
-#		for i in range(UI.x - random_x_unique - 2):
-#			print(UI.space, end = "")
-
-#		print(UI.white_white + "#" + UI.reset)
-
 
 class Player:
 	width = int(5)
