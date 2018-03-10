@@ -28,6 +28,29 @@ class UI:
 		stdout.write("\033[F") # Back to previous line.
 		stdout.write("\033[K") # Clearline.
 
+class Player:
+	width = int(5)
+	if width >= UI.x - 2:
+		exit("Width must be less than UI.x - 2!")
+
+	def model():
+		print(UI.green_green + Player.width * "@", end = "" + UI.reset)
+
+	def render():
+		UI.horizontal_border()
+		print(UI.white_white + "#", end = "" + UI.reset) # Left, vertical border.
+
+		position = int(float(0.5 * UI.x - 0.5 * Player.width))
+
+		print(position * UI.space, end = "") # Space after left border.
+
+		Player.model()
+
+		for i in range(UI.x - position - Player.width - 2):
+			print(UI.space, end = "") # Space before fixed, left border.
+
+		print(UI.white_white + "#" + UI.reset) # Right, vertical border.
+
 class Enemies:
 	width = int(10)
 	if width >= UI.x - 2:
@@ -37,8 +60,6 @@ class Enemies:
 		print(UI.red_red + Enemies.width * "$", end = "" + UI.reset)
 
 	def render():
-		UI.horizontal_border()
-
 # Rendering empty space.
 		for i in range(UI.y - 3):
 			print(UI.white_white + "#" + UI.reset, end = "")
@@ -67,28 +88,6 @@ class Enemies:
 
 #			UI.clearline()
 
-class Player:
-	width = int(5)
-	if width >= UI.x - 2:
-		exit("Width must be less than UI.x - 2!")
-
-	def model():
-		print(UI.green_green + Player.width * "@", end = "" + UI.reset)
-
-	def render():
-		print(UI.white_white + "#", end = "" + UI.reset) # Left, vertical border.
-
-		position = int(float(0.5 * UI.x - 0.5 * Player.width))
-
-		print(position * UI.space, end = "") # Space after left border.
-
-		Player.model()
-
-		for i in range(UI.x - position - Player.width - 2):
-			print(UI.space, end = "") # Space before fixed, left border.
-
-		print(UI.white_white + "#" + UI.reset) # Right, vertical border.
-
-Enemies.render()
 Player.render()
+Enemies.render()
 
