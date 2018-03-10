@@ -69,6 +69,8 @@ class Enemies:
 
 			print(UI.white_white + "#" + UI.reset)
 
+			UI.clearline()
+
 # Rendering Enemies:
 		for i in range(UI.y - 3): # Window height.
 			print(UI.white_white + "#", end = "" + UI.reset) # Left border.
