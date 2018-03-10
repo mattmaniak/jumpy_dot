@@ -5,6 +5,8 @@ from random import randint
 from sys import exit, stdout
 from time import sleep
 
+import pdb
+
 class UI:
 # ANSI escape codes. Background and foreground are filled with the same color.
 	reset = "\033[0m"
@@ -34,11 +36,20 @@ class Enemies:
 	def model():
 		print(UI.red_red + Enemies.width * "$", end = "" + UI.reset)
 
-
 	def render():
 		UI.horizontal_border()
 
-		for i in range(0, UI.y - 3): # Window height.
+# Rendering empty space.
+		for i in range(UI.y - 3):
+			print(UI.white_white + "#" + UI.reset, end = "")
+
+			for i in range(UI.x - 2):			
+				print(UI.space, end = "")
+
+			print(UI.white_white + "#" + UI.reset)
+
+# Rendering Enemies:
+		for i in range(UI.y - 3): # Window height.
 			print(UI.white_white + "#", end = "" + UI.reset) # Left border.
 
 			# Random amount of spaces before the Enemy:
@@ -53,6 +64,8 @@ class Enemies:
 				print(UI.space, end = "")
 
 			print(UI.white_white + "#" + UI.reset) # Right border.
+
+#			UI.clearline()
 
 class Player:
 	width = int(5)
