@@ -64,7 +64,7 @@ class Enemies:
 		for i in range(UI.y - 3):
 			print(UI.white_white + "#" + UI.reset, end = "")
 
-			for i in range(UI.x - 2):			
+			for i in range(UI.x - 2):
 				print(UI.space, end = "")
 
 			print(UI.white_white + "#" + UI.reset)
