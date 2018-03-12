@@ -3,24 +3,29 @@
 from os import popen
 from sys import exit, stdout
 
+# Reads a terminal size based on letters.
+y, x = popen("stty size", "r").read().split()
+
+x = int(x)
+y = int(y)
+
 # ANSI escape codes.
 # Background and foreground are filled with the same color.
 
 default = "\033[0m"
-red_block = "\033[41;31m"
-green_block = "\033[42;32m"
-white_block = "\033[47;37m"
+error = "\033[41;30m"
 
-# Reads a terminal size based on letters.
-y, x = popen("stty size", "r").read().split()
-x = int(x)
-y = int(y)
+red = "\033[41;31m"
+green = "\033[42;32m"
+blue = "\033[44;34m"
+white = "\033[47;37m"
+
 
 space = str(" ")
 
 def horizontal_border():
 	for i in range(x):
-		print(white_block + "#", end = "" + default)
+		print(white + "#", end = "" + default)
 
 def clearline():
 	stdout.write("\033[F") # Back to the previous line.
