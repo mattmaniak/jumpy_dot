@@ -1,10 +1,8 @@
-#! /usr/bin/python3
-
 import ui
-
 from sys import exit
 
 # Width and height must be entered manually!
+# Examples of models below.
 
 class Cloud:
 	width = int(20)
@@ -17,18 +15,14 @@ class Cloud:
 		exit("Height must be less than ui.x - 18.")
 
 	def model():
-		print(ui.blue + Cloud.width * "#")
-		print(ui.blue + Cloud.width * "#")
-		print(ui.blue + Cloud.width * "#")
-		print(ui.blue + Cloud.width * "#")
-		print(ui.blue + Cloud.width * "#")
-		print(ui.blue + Cloud.width * "#")
-		print(ui.blue + Cloud.width * "#")
-		print(ui.blue + Cloud.width * "#")
-		print(ui.blue + Cloud.width * "#" + ui.default)
+		for i in range(Cloud.height):
+			print(ui.white + "#", end = "" + ui.default)
+
+			for i in range(Cloud.width):
+				print(ui.white + "#" + ui.default)
 
 class Enemy:
-	width = int(10)
+	width = int(1)
 	height = int(1)
 
 	if width >= ui.x - 2:
@@ -38,10 +32,11 @@ class Enemy:
 		exit("Width must be less than 15.")
 
 	def model():
-		print(ui.red_block + Enemies.width * "#", end = "" + ui.default)
+		for i in range(Enemy.height):
+			print(ui.red + "#" + ui.default)
 
 class Player:
-	width = int(5)
+	width = int(1)
 	height = int(1)
 
 	if width >= ui.x - 2:
@@ -51,5 +46,6 @@ class Player:
 		exit("Width must be less than 15.")
 
 	def model():
-		print(ui.green_block + Player.width * "#", end = "" + ui.default)
+		for i in range(Player.height):
+			print(ui.green + "#", end = "" + ui.default)
 
