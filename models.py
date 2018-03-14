@@ -1,7 +1,7 @@
 import ui
 from sys import exit
 
-# Width and height must be entered manually!
+# Width and height must be entered manually and must be equal 1.
 # Examples of models below.
 
 class Cloud:
@@ -28,12 +28,12 @@ class Enemy:
 	if width >= ui.x - 2:
 		exit(ui.error + "Width must be less than ui.x - 2." + ui.default)
 
-	if height >= 15:
-		exit("Width must be less than 15.")
+	if height >= 15: # main.user_area_height
+		exit("Width must be less than 'ui.user_area_height.'.")
 
 	def model():
 		for i in range(Enemy.height):
-			print(ui.red + "#" + ui.default)
+			print(ui.red + "#", end = "" + ui.default)
 
 class Player:
 	width = int(1)
@@ -42,8 +42,8 @@ class Player:
 	if width >= ui.x - 2:
 		exit(ui.error + "Width must be less than ui.x - 2." + ui.default)
 
-	if height >= 15:
-		exit("Width must be less than 15.")
+	if height >= 15: # main.user_area_height
+		exit("Width must be less than ui.user_area_height.")
 
 	def model():
 		for i in range(Player.height):

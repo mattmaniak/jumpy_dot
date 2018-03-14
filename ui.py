@@ -27,3 +27,7 @@ def clearline():
 	stdout.write("\033[F") # Back to the previous line.
 	stdout.write("\033[K") # Clear the line.
 
+def window_x_check():
+	if x % 2 == 0: # Check if terminal width can be divided by 2.
+		return x / 2
+
