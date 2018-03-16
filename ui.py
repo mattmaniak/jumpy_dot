@@ -16,12 +16,12 @@ error = "\033[41;30m"
 # Background and foreground are filled with the same color.
 red = "\033[41;31m"
 green = "\033[42;32m"
-blue = "\033[44;34m"
 white = "\033[47;37m"
+bright_blue = "\033[104;94m"
 
 def horizontal_border():
 	for i in range(x):
-		print(white + "#", end = "" + default)
+		print(white + "#" + default, end = "", flush = "True")
 
 def clearline():
 	stdout.write("\033[F") # Back to the previous line.
