@@ -6,6 +6,10 @@ from sys import exit
 
 # Some 'model' placeholders here.
 
+def cloud():
+	for i in range(1):
+		print(ui.white + "#" + ui.default, end = "", flush = "True")
+
 def enemy():
 	for i in range(1): # height
 		print(ui.red + "#" + ui.default, end = "", flush = "True")
