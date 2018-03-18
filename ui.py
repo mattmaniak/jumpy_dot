@@ -1,5 +1,5 @@
 from os import popen
-from sys import exit, stdout
+from sys import stdout
 
 # Reads a terminal size based on letters.
 y, x = popen("stty size", "r").read().split()
@@ -10,14 +10,14 @@ y = int(y)
 space = str(" ")
 
 # ANSI escape codes.
-default = "\033[0m"
-error = "\033[41;30m"
+default = str("\033[0m")
+error = str("\033[41;30m")
 
 # Background and foreground are filled with the same color.
-red = "\033[41;31m"
-green = "\033[42;32m"
-white = "\033[47;37m"
-bright_blue = "\033[104;94m"
+red = str("\033[41;31m")
+green = str("\033[42;32m")
+white = str("\033[47;37m")
+bright_blue = str("\033[104;94m")
 
 def horizontal_border():
 	for i in range(x):
