@@ -3,14 +3,17 @@
 from random import randint
 from time import sleep
 
-import ui, models, window
+import assets.models as models
+import assets.ui as ui
+import assets.window as window
 
+cloud_x = int(ui.x - 2)
 player_x = int(0)
 enemy_x = int(ui.x - player_x - 4)
 
 def key_event():
 
-	global enemy_x
+	global cloud_x, enemy_x
 
 	sleep(0.1)
 	key = str(input())
@@ -28,7 +31,7 @@ def collision_check():
 		sys.exit("You lose!")
 
 while True:
-	window.environment()
+	window.environment(cloud_x)
 	window.playable_area(player_x, enemy_x)
 
 	move = key_event()

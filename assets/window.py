@@ -1,8 +1,10 @@
 from random import randint
 
-import models, ui
+import assets.models as models
+import assets.ui as ui
 
-def environment(): # Non-playable area with clouds, above playable area.
+# Non-playable area with clouds, above playable area.
+def environment(cloud_x):
 
 	ui.horizontal_border()
 

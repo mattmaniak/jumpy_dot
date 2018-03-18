@@ -1,4 +1,4 @@
-import ui
+import assets.ui as ui
 
 # Size of models must be 1x1, eg. '#' - just one ASCII char.
 
