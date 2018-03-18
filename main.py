@@ -4,14 +4,22 @@ from time import sleep
 
 import ui, models, window
 
+position = int(0)
+
 def key_event():
+	global position
+
 	key = str(input("Enter: "))
 
+	
+
 	if key == "":
-		return 1
+		position += 1
+		return position
 
-move = key_event()
+while True:
+	move = key_event()
 
-window.environment()
-window.playable_area(move)
+	window.environment()
+	window.playable_area(move)
 
