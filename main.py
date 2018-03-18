@@ -8,9 +8,10 @@ def key_event():
 	key = str(input("Enter: "))
 
 	if key == "":
-		print("ok")
+		return 1
 
+move = key_event()
 
 window.environment()
-window.playable_area()
+window.playable_area(move)
 
