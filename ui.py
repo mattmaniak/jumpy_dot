@@ -23,6 +23,10 @@ def horizontal_border():
 	for i in range(x):
 		print(white + "#" + default, end = "", flush = "True")
 
+def input_border():
+	for i in range(x - 1):
+		print(white + "#" + default, end = "", flush = "True")
+
 def clearline():
 	stdout.write("\033[F") # Back to the previous line.
 	stdout.write("\033[K") # Clear the line.

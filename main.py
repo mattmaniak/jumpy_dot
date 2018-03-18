@@ -1,25 +1,37 @@
 #! /usr/bin/python3
 
+from random import randint
 from time import sleep
 
 import ui, models, window
 
-position = int(0)
+player_x = int(0)
+enemy_x = int(ui.x - player_x - 4)
 
 def key_event():
-	global position
 
-	key = str(input("Enter: "))
+	global enemy_x
 
-	
+	sleep(0.1)
+	key = str(input())
+	ui.clearline()
 
-	if key == "":
-		position += 1
-		return position
+	if key == "": # Empty input = 'Enter' key.
+		enemy_x -= 1 # 0 value makes 1 space between models.
+		return enemy_x
+
+def collision_check():
+
+	if enemy_x == -1:
+		import sys
+		ui.clearline
+		sys.exit("You lose!")
 
 while True:
+	window.environment()
+	window.playable_area(player_x, enemy_x)
+
 	move = key_event()
 
-	window.environment()
-	window.playable_area(move)
+	collision_check()
 

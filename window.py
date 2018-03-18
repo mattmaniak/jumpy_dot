@@ -15,12 +15,13 @@ def environment(): # Non-playable area with clouds, above playable area.
 		print(ui.white + "#" + ui.default) # Right border.
 
 
-def playable_area(move): # Area where Player takes activities with Enemies.
+# Area where Player takes activities with Enemies.
+def playable_area(player_x, enemy_x):
 
-	player_x = int(0) # Define Player position.
+#	player_x = int(0) # Define Player position.
 
 	# Amount of spaces between the player and the enemy.
-	enemy_x = randint(0, ui.x - player_x - 4)
+#	enemy_x = randint(0, ui.x - player_x - 4)
 
 
 	# Upper part of the playable_area.
@@ -36,12 +37,12 @@ def playable_area(move): # Area where Player takes activities with Enemies.
 	# Left, fixed border before the Player.
 	print(ui.white + "#", end = "" + ui.default)
 
-	for i in range(player_x + move): # Spaces before the player.
+	for i in range(player_x): # Spaces before the player.
 		print(ui.space, end = "")
 	
 	models.player()
 
-	for i in range(enemy_x - move): # Space chars after the player.
+	for i in range(enemy_x): # Space chars after the player.
 		print(ui.space, end = "")
 
 	models.enemy()
