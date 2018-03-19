@@ -22,16 +22,24 @@ def key_event():
 		enemy_x -= 1
 		return enemy_x
 
+def enemy_move():
+	global cloud_x, enemy_x
+
+	while 1:
+		sleep(0.1)
+		enemy_x -= 1
+		return enemy_x
+
 def collision_check():
 	if enemy_x == -1: # 0 value makes 1 space between models.
 		gfx.clearline()
 		sys_exit("You lose!")
 
-while True: # Test.
+while 1: # Test.
 	window.environment(cloud_x)
 	window.playable_area(player_x, enemy_x)
 
-	move = key_event()
+	move = enemy_move()
 
 	collision_check()
 
