@@ -1,5 +1,4 @@
 ### jumpy-dot
-https://github.com/mattaniak/jumpy-dot
 The license can be found in the root folder.
 
 #### What's that?
