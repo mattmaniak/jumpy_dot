@@ -1,9 +1,9 @@
-#### jumpy-dot
+### jumpy-dot
 https://github.com/mattaniak/jumpy-dot
 
 #### What's that?
 It's a simple ASCII-based game written in Python 3.
-You're the player (green) and your mission is avoid enemies (reds).
+Your mission (as a green) is jumping above enemies (reds).
 
 #### Requiremets:
 - *nix system,
