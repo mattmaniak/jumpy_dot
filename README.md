@@ -1,5 +1,6 @@
 ### jumpy-dot
 https://github.com/mattaniak/jumpy-dot
+The license can be found in the root folder.
 
 #### What's that?
 It's a simple ASCII-based game written in Python 3.
