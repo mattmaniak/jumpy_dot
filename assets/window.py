@@ -6,7 +6,29 @@ import assets.gfx as gfx
 def environment(cloud_x):
 	gfx.horizontal_border()
 
-	for i in range(gfx.y - 4): # Environment height.
+	for i in range(3): # Environment height.
+		print(gfx.white + "#", end = "" + gfx.default) # Left border.
+
+		for i in range(gfx.x - 2): # Spaces after left border.
+			print(end = " ") # Environment empty area.
+
+		print(gfx.white + "#" + gfx.default) # Right border.
+
+
+	print(gfx.white + "#" + gfx.default, end = "")
+
+	for i in range(cloud_x):
+		print(end = " ")
+
+	gfx.cloud()
+
+	for i in range(gfx.x - cloud_x - 3): # 1 is the cloud width.
+		print(end = " ")
+
+	print(gfx.white + "#" + gfx.default)
+
+
+	for i in range(gfx.y - 8): # Environment height.
 		print(gfx.white + "#", end = "" + gfx.default) # Left border.
 
 		for i in range(gfx.x - 2): # Spaces after left border.
@@ -17,12 +39,6 @@ def environment(cloud_x):
 
 # Area where Player takes activities with Enemies.
 def playable_area(player_x, enemy_x):
-#	player_x = int(0) # Define Player position.
-
-	# Amount of spaces between the player and the enemy.
-#	enemy_x = randint(0, gfx.x - player_x - 4)
-
-
 	# Upper part of the playable_area.
 	print(gfx.white + "#", end = "" + gfx.default) # Left border.
 
@@ -50,6 +66,4 @@ def playable_area(player_x, enemy_x):
 		print(end = " ") # Space chars after the Enemy.
 	
 	print(gfx.white + "#" + gfx.default) # Fixed border after the player.
-	
-#	gfx.horizontal_border()
 

@@ -31,7 +31,7 @@ def clearline():
 
 # Models.
 def cloud():
-	print(white + "#" + default, end = "")
+	print(bright_blue + "#" + default, end = "")
 
 def enemy():
 	print(red + "#" + default, end = "")

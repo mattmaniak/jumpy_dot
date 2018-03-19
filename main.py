@@ -7,42 +7,61 @@ from time import sleep
 import assets.gfx as gfx
 import assets.window as window
 
-cloud_x = int(gfx.x - 2) # - 2 due the temponary, vertical borders.
+cloud_x = int(gfx.x - 3) # 1 is the cloud width. 2 = vertical borders.
 player_x = int(10)
 enemy_x = int(gfx.x - player_x - 4)
 
-time = int(0)
+time_score = int(0)
 
-def key_event():
-	global cloud_x, enemy_x
+frame_break = float(0.1) # Time to render single frame.
+# It's also affects on the clouds and enemies speeds.
 
-	sleep(0.1)
-	key = str(input())
-	gfx.clearline()
 
-	if key == "": # Empty input = 'Enter' key.
-		enemy_x -= 1
-		return enemy_x
+# def key_event():
+#	global cloud_x, enemy_x
+
+#	sleep(frame_break)
+#	key = str(input())
+#	gfx.clearline()
+
+#	if key == "": # Empty input = 'Enter' key.
+#		enemy_x -= 1
+#		return enemy_x
+
 
 def enemy_move():
-	global cloud_x, enemy_x
+	global enemy_x
 
 	while 1:
-		sleep(0.1)
-		enemy_x -= 4
+		sleep(frame_break)
+		enemy_x -= 1
 		return enemy_x
 
 def collision_check():
 	if enemy_x < 0: # 0 value makes 1 space between models.
 		gfx.clearline()
-		print(gfx.score + "Your score:", time, "s." + gfx.default)
+		print(gfx.score + "Your score:", time_score, "s." + gfx.default)
 		sys_exit()
+
+def cloud_move():
+	global cloud_x
+
+	while 1:
+		sleep(frame_break)
+		cloud_x -= 1
+
+		if cloud_x == 0:
+			cloud_x = gfx.x - 3 # It won't work with cloux_x != 1.
+
+		return cloud_x
+
 
 while 1: # Test.
 	window.environment(cloud_x)
 	window.playable_area(player_x, enemy_x)
 
-	move = enemy_move()
+	cl_move = cloud_move()
+	en_move = enemy_move()
 
 	collision_check()
 
