@@ -6,9 +6,11 @@ y, x = popen("stty size", "r").read().split()
 x = int(x)
 y = int(y)
 
-# ANSI escape codes. First two: normal text, color blocks on the bottom.
-default = str("\033[0m")
-error = str("\033[41;30m")
+# ANSI escape codes. First three: normal text, color blocks on the bottom.
+default = str("\033[0m") # Terminal default text.
+error = str("\033[41;30m") # Black text with red background.
+score = str("\033[32m") # Green text.
+
 red = str("\033[41;31m")
 green = str("\033[42;32m")
 white = str("\033[47;37m")
