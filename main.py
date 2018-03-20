@@ -7,7 +7,6 @@ from time import sleep
 import assets.gfx as gfx
 import assets.window as window
 
-cloud_x = int(gfx.x - 3) # 1 is the cloud width. 2 = vertical borders.
 player_x = int(10)
 enemy_x = int(gfx.x - player_x - 4)
 
@@ -27,7 +26,6 @@ frame_break = float(0.1) # Time to render single frame.
 #	if key == "": # Empty input = 'Enter' key.
 #		enemy_x -= 1
 #		return enemy_x
-
 
 def enemy_move():
 	global enemy_x
@@ -57,11 +55,10 @@ def cloud_move():
 
 
 while 1: # Test.
-	window.environment(cloud_x)
+	window.environment()
 	window.playable_area(player_x, enemy_x)
 
-	cl_move = cloud_move()
-	en_move = enemy_move()
+	enemy_move()
 
 	collision_check()
 

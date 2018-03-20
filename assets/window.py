@@ -3,32 +3,10 @@ from random import randint
 import assets.gfx as gfx
 
 # Non-playable area with clouds, above playable area.
-def environment(cloud_x):
+def environment():
 	gfx.horizontal_border()
 
-	for i in range(3): # Environment height.
-		print(gfx.white + "#", end = "" + gfx.default) # Left border.
-
-		for i in range(gfx.x - 2): # Spaces after left border.
-			print(end = " ") # Environment empty area.
-
-		print(gfx.white + "#" + gfx.default) # Right border.
-
-
-	print(gfx.white + "#" + gfx.default, end = "")
-
-	for i in range(cloud_x):
-		print(end = " ")
-
-	gfx.cloud()
-
-	for i in range(gfx.x - cloud_x - 3): # 1 is the cloud width.
-		print(end = " ")
-
-	print(gfx.white + "#" + gfx.default)
-
-
-	for i in range(gfx.y - 8): # Environment height.
+	for i in range(gfx.y - 4): # Environment height.
 		print(gfx.white + "#", end = "" + gfx.default) # Left border.
 
 		for i in range(gfx.x - 2): # Spaces after left border.
