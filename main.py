@@ -1,31 +1,31 @@
 #! /usr/bin/python3
 
 from random import randint
-from sys import exit as sys_exit
+from sys import exit as sys__exit
 from time import sleep
 
 import assets.gfx as gfx
 import assets.window as window
 
-player_x = int(10)
-enemy_x = int(gfx.x - player_x - 4)
 
-time_score = int(0)
+enemy_x = int(gfx.x - window.player_x - 4) # Enemy starting position.
 
 frame_break = float(0.1) # Time to render single frame.
 # It's also affects on the clouds and enemies speeds.
 
+def key_event():
+	global enemy_x
 
-# def key_event():
-#	global cloud_x, enemy_x
+	key = str(input())
+	sleep(frame_break)
 
-#	sleep(frame_break)
-#	key = str(input())
-#	gfx.clearline()
+	if not key:
+		pass
 
-#	if key == "": # Empty input = 'Enter' key.
-#		enemy_x -= 1
-#		return enemy_x
+#	if key == "": # Empty input = 'Enter' key event.
+#		window.environment()
+#		window.jump()
+#		window.idle(enemy_x)
 
 def enemy_move():
 	global enemy_x
@@ -38,27 +38,22 @@ def enemy_move():
 def collision_check():
 	if enemy_x < 0: # 0 value makes 1 space between models.
 		gfx.clearline()
-		print(gfx.score + "Your score:", time_score, "s." + gfx.default)
-		sys_exit()
+		print(gfx.score + "Your score:" + gfx.default)
+		sys__exit()
 
-def cloud_move():
-	global cloud_x
 
-	while 1:
-		sleep(frame_break)
-		cloud_x -= 1
-
-		if cloud_x == 0:
-			cloud_x = gfx.x - 3 # It won't work with cloux_x != 1.
-
-		return cloud_x
-
+window.environment()	# \
+window.jump()			# Game start positions.
+window.idle(enemy_x)	# /
 
 while 1: # Test.
-	window.environment()
-	window.playable_area(player_x, enemy_x)
-
 	enemy_move()
 
+	key_event()
+
 	collision_check()
+
+	window.environment()
+	window.jump()
+	window.idle(enemy_x)
 

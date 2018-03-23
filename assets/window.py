@@ -2,6 +2,9 @@ from random import randint
 
 import assets.gfx as gfx
 
+
+player_x = int(10) # Adjustable, fixed player position.
+
 # Non-playable area with clouds, above playable area.
 def environment():
 	gfx.horizontal_border()
@@ -16,7 +19,7 @@ def environment():
 
 
 # Area where Player takes activities with Enemies.
-def playable_area(player_x, enemy_x):
+def jump():
 	# Upper part of the playable_area.
 	print(gfx.white + "#", end = "" + gfx.default) # Left border.
 
@@ -26,13 +29,16 @@ def playable_area(player_x, enemy_x):
 	print(gfx.white + "#" + gfx.default) # Right border.
 
 
+def idle(enemy_x):
+	global player_x
+
 	# Lower part of the playable_area.
 	# Left, fixed border before the Player.
 	print(gfx.white + "#", end = "" + gfx.default)
 
 	for i in range(player_x): # Spaces before the player.
 		print(end = " ")
-	
+
 	gfx.player()
 
 	for i in range(enemy_x): # Space chars after the player.
@@ -42,6 +48,6 @@ def playable_area(player_x, enemy_x):
 
 	for i in range(gfx.x - player_x - enemy_x - 4):
 		print(end = " ") # Space chars after the Enemy.
-	
-	print(gfx.white + "#" + gfx.default) # Fixed border after the player.
+
+	print(gfx.white + "#" + gfx.default) # Fixed border after the enemy.
 
