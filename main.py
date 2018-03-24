@@ -7,6 +7,10 @@ from time import sleep
 import assets.gfx as gfx
 import assets.window as window
 
+from sys import stdin
+from threading import Thread
+from subprocess import call
+import signal
 
 enemy_x = int(gfx.x - window.player_x - 4) # Enemy starting position.
 
@@ -16,11 +20,19 @@ frame_break = float(0.1) # Time to render single frame.
 def key_event():
 	global enemy_x
 
-	key = str(input())
-	sleep(frame_break)
+	key = None
 
-	if not key:
-		pass
+	def time_pass():
+		sleep(frame_break - 0.01)
+		if key != None:
+			return 0
+
+		window.environment()
+		window.jump()
+		window.idle(enemy_x)
+
+	Thread(target = time_pass).start()
+	key = str(input())
 
 #	if key == "": # Empty input = 'Enter' key event.
 #		window.environment()
