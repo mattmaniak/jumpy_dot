@@ -9,21 +9,35 @@ from sys import stdin
 import assets.gfx as gfx
 import assets.window as window
 
-enemy_x = int(gfx.x - window.player_x - 4) # Enemy starting position.
-
-frame_break = float(0.5) # Time to render single frame.
+frame_break = float(0.1) # Time to render single frame.
 # It's also affects on the clouds and enemies speeds.
 
 def key_event():
-	key, foo, bar = select([stdin], [], [], 1) # After key, moves faster.
+	global enemy_x
+
+#	key, foo, bar = select([stdin], [], [], 1) # After key, moves faster.
+
+	key = str(input()) # Pseudo key event.
+
+	if key == "": # 'Enter' key simulation. Print with jump.
+		window.enemy_x -= 1
+		window.environment()
+		window.jump(window.enemy_x)
+		sleep(frame_break)
+
+	else: # If not enter, print without jump.
+		window.enemy_x -= 1
+		window.environment()
+		window.idle(window.enemy_x)		
+		sleep(frame_break)
 
 def enemy_move():
 	global enemy_x
 
 	while 1:
 		sleep(frame_break)
-		enemy_x -= 1
-		return enemy_x
+		
+		return window.enemy_x
 
 def collision_check():
 	if enemy_x < 0: # 0 value makes 1 space between models.
@@ -33,14 +47,9 @@ def collision_check():
 
 
 window.environment()
-window.idle(enemy_x)
+window.idle(window.enemy_x)
 
 
 while 1: # Test.
-	enemy_move()
-
 	key_event()
-
-	window.environment()
-	window.jump(enemy_x)
 
