@@ -12,26 +12,33 @@ import assets.window as window
 frame_break = float(0.1) # Time to render single frame.
 # It's also affects on the clouds and enemies speeds.
 
-def key_event():
+def round():
 	global enemy_x
 
-	key, foo, bar = select([stdin], [], [], frame_break)
+	key, foo, bar = select([stdin], [], [], frame_break) # Key event.
 
-	if key: # 'Enter' key simulation. Print with jump.
-		window.enemy_x -= 1
-		window.environment()
-		window.jump(window.enemy_x)
-		sleep(2 * frame_break) # 0.2 seconds.
+	if key: # key ('Enter' is the best way) is pressed: print with jump.
+		for i in range(3):
+			window.enemy_x -= 1
+			window.environment()
+			window.jump(window.enemy_x)
+			sleep(2 * frame_break) # 0.2 seconds.
 
-	else: # If not enter, print without jump.	
+		else:
+			window.enemy_x -= 1
+			window.environment()
+			window.idle(window.enemy_x)
+			sleep(frame_break)
+
+	else: # If not clicked, print without jump.
 		window.enemy_x -= 1
 		window.environment()
 		window.idle(window.enemy_x)
 		sleep(frame_break)
 
-window.environment()
+window.environment() # Initial frames.
 window.idle(window.enemy_x)
 
-while 1: # Test.
-	key_event()
+while 1:
+	round()
 
