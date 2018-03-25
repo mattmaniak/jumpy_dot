@@ -15,20 +15,20 @@ frame_break = float(0.1) # Time to render single frame.
 def key_event():
 	global enemy_x
 
-#	key, foo, bar = select([stdin], [], [], 1) # After key, moves faster.
+	key, foo, bar = select([stdin], [], [], frame_break) # After key, moves faster.
 
-	key = str(input()) # Pseudo key event.
+#	key = str(input()) # Pseudo key event.
 
-	if key == "": # 'Enter' key simulation. Print with jump.
+	if key: # 'Enter' key simulation. Print with jump.
 		window.enemy_x -= 1
 		window.environment()
 		window.jump(window.enemy_x)
 		sleep(frame_break)
 
-	else: # If not enter, print without jump.
+	else: # If not enter, print without jump.	
 		window.enemy_x -= 1
 		window.environment()
-		window.idle(window.enemy_x)		
+		window.idle(window.enemy_x)
 		sleep(frame_break)
 
 def enemy_move():
