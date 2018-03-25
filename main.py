@@ -17,18 +17,6 @@ frame_break = float(0.5) # Time to render single frame.
 def key_event():
 	key, foo, bar = select([stdin], [], [], 1) # After key, moves faster.
 
-	if key:
-		print("Press")
-# Jump!
-
-	else:
-		print("No keypress.")
-
-#	if key == "": # Empty input = 'Enter' key event.
-#		window.environment()
-#		window.jump()
-#		window.idle(enemy_x)
-
 def enemy_move():
 	global enemy_x
 
@@ -44,18 +32,15 @@ def collision_check():
 		sys__exit()
 
 
-window.environment()	# \
-window.jump()			# Game start positions.
-window.idle(enemy_x)	# /
+window.environment()
+window.idle(enemy_x)
+
 
 while 1: # Test.
 	enemy_move()
 
 	key_event()
 
-	collision_check()
-
 	window.environment()
-	window.jump()
-	window.idle(enemy_x)
+	window.jump(enemy_x)
 
