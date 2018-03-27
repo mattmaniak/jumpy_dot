@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 
 from random import randint
-from sys import exit as sys__exit
+from sys import exit as sys_exit
 from time import sleep
 from select import select
 from sys import stdin
@@ -28,14 +28,13 @@ def logic():
 			window.enemy_x -= 1
 			window.environment()
 			window.jump(window.enemy_x)
-			sleep(2 * frame_break) # 0.2 seconds.
-
+			sleep(2 * frame_break)
 		else:
 			frame()
-
-	else: # If not clicked, print without jump.
+	else:
 		frame()
 
+window.size_check()
 window.environment() # Initial frames.
 window.idle(window.enemy_x)
 

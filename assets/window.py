@@ -1,10 +1,18 @@
 from random import randint
-from sys import exit as sys__exit
+from sys import exit as sys_exit
 
 import assets.gfx as gfx
 
 player_x = int(10) # Adjustable, fixed player position.
 enemy_x = int(gfx.x - player_x - 4) # Enemy starting position.
+
+def size_check():
+	if gfx.x > 1024 or gfx.y > 1024:
+		if gfx.x < player_x + 5 or gfx.y < 4:
+			print("Window size error!")
+			sys_exit()
+		print("Window size error!")
+		sys_exit()
 
 # Non-playable area with clouds, above playable area.
 def environment():
@@ -51,7 +59,7 @@ def jump(enemy_x):
 	print(gfx.white + "#" + gfx.default) # Fixed border after the enemy.
 
 	if enemy_x + player_x + 1 < 0: # 0 value makes 1 space between models.
-		sys__exit()
+		sys_exit()
 
 
 def idle(enemy_x):
@@ -87,5 +95,5 @@ def idle(enemy_x):
 	if enemy_x < 0: # 0 value makes 1 space between models.
 		gfx.clearline()
 		print(gfx.score + "Your score:" + gfx.default)
-		sys__exit()
+		sys_exit()
 
