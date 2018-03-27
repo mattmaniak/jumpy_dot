@@ -21,8 +21,7 @@ window.size_check()
 window.environment() # Initial frames.
 window.idle(window.enemy_x)
 
-
-while 1:
+def round():
 	key, foo, bar = select([stdin], [], [], frame_break) # Key event.
 
 	if key: # key ('Enter' is the best way) is pressed: print with jump.
@@ -32,10 +31,12 @@ while 1:
 			window.jump(window.enemy_x)
 			sleep(frame_break)
 
-		while 1:
+		else:
 			frame()
-			sleep(frame_break)
 
 	else: # If not clicked, print without jump.
 		frame()
+		round()
+
+round()
 
