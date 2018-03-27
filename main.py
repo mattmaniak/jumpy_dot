@@ -18,28 +18,15 @@ def frame():
 	window.idle(window.enemy_x)
 	sleep(frame_break)
 
-def logic(state):
-	global enemy_x
-
-	key, foo, bar = select([stdin], [], [], frame_break) # Key event.
-
-	if key: # key ('Enter' is the best way) is pressed: print with jump.
-		return "jump"
-
-#		else:
-#			frame()
-
-	else: # If not clicked, print without jump.
-		return "idle"
-
 window.size_check()
 window.environment() # Initial frames.
 window.idle(window.enemy_x)
 
-state = str("")
 
 while 1:
-	if logic(state) == "jump":
+	key, foo, bar = select([stdin], [], [], frame_break) # Key event.
+
+	if key: # key ('Enter' is the best way) is pressed: print with jump.
 		for i in range(3):
 			window.enemy_x -= 1
 			window.environment()
@@ -49,6 +36,6 @@ while 1:
 		while 1:
 			frame()
 
-	elif logic(state) == "idle":
+	else: # If not clicked, print without jump.
 		frame()
 
