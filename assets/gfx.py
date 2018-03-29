@@ -28,9 +28,7 @@ def clearline():
 	stdout.write("\033[F") # Back to the previous line.
 	stdout.write("\033[K") # Clear the line.
 
-
-# Models.
-def enemy():
+def enemy(): # Models.
 	print(red + "#" + default, end = "")
 
 def player():

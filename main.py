@@ -2,63 +2,52 @@
 
 from random import randint
 from sys import exit as sys_exit
+from termios import tcflush, TCIOFLUSH
 from time import sleep
+from select import select
+from sys import stdin
 
 import assets.gfx as gfx
 import assets.window as window
 
-player_x = int(10)
-enemy_x = int(gfx.x - player_x - 4)
-
-time_score = int(0)
-
 frame_break = float(0.1) # Time to render single frame.
 # It's also affects on the clouds and enemies speeds.
 
-
-# def key_event():
-#	global cloud_x, enemy_x
-
-#	sleep(frame_break)
-#	key = str(input())
-#	gfx.clearline()
-
-#	if key == "": # Empty input = 'Enter' key.
-#		enemy_x -= 1
-#		return enemy_x
-
-def enemy_move():
-	global enemy_x
-
-	while 1:
-		sleep(frame_break)
-		enemy_x -= 1
-		return enemy_x
-
-def collision_check():
-	if enemy_x < 0: # 0 value makes 1 space between models.
-		gfx.clearline()
-		print(gfx.score + "Your score:", time_score, "s." + gfx.default)
-		sys_exit()
-
-def cloud_move():
-	global cloud_x
-
-	while 1:
-		sleep(frame_break)
-		cloud_x -= 1
-
-		if cloud_x == 0:
-			cloud_x = gfx.x - 3 # It won't work with cloux_x != 1.
-
-		return cloud_x
-
-
-while 1: # Test.
+def frame():
+	window.enemy_x -= 1
 	window.environment()
-	window.playable_area(player_x, enemy_x)
+	window.idle(window.enemy_x)
 
-	enemy_move()
+def keypress():
+	key, foo, bar = select([stdin], [], [], frame_break)
 
-	collision_check()
+	if key: # key ('Enter' is the best way) is pressed: print with jump.
+		return 1
+
+	else: # If not clicked, print without jump.
+		return 0
+
+def round():
+	if keypress() == 1:
+		tcflush(stdin, TCIOFLUSH)
+
+		for i in range(30): # Jump width.
+			window.enemy_x -= 1
+			window.environment()
+			if window.jump(window.enemy_x) == 0:
+				window.enemy_x = int(gfx.x - window.player_x - 4)
+
+			sleep(frame_break)
+
+		round()
+
+	else:
+		frame()
+		round()
+
+window.size_check()			# \
+window.environment()		# Initial frames.
+window.idle(window.enemy_x)	# /
+
+round()
 
