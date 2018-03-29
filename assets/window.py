@@ -60,7 +60,7 @@ def jump(enemy_x):
 	print(gfx.white + "#" + gfx.default) # Fixed border after the enemy.
 
 	if enemy_x + player_x + 1 < 0: # 0 value makes 1 space between models.
-		sys_exit()
+		return 0
 
 
 def idle(enemy_x):

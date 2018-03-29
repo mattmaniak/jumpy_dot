@@ -18,18 +18,7 @@ def frame():
 	window.environment()
 	window.idle(window.enemy_x)
 
-window.size_check()
-window.environment() # Initial frames.
-window.idle(window.enemy_x)
-
-def jump_frame():
-	for i in range(10): # Jump width.
-		window.enemy_x -= 1
-		window.environment()
-		window.jump(window.enemy_x)
-		sleep(frame_break)
-
-def key_event():
+def keypress():
 	key, foo, bar = select([stdin], [], [], frame_break)
 
 	if key: # key ('Enter' is the best way) is pressed: print with jump.
@@ -39,14 +28,26 @@ def key_event():
 		return 0
 
 def round():
-	if key_event() == 1:
-		jump_frame()
+	if keypress() == 1:
 		tcflush(stdin, TCIOFLUSH)
+
+		for i in range(30): # Jump width.
+			window.enemy_x -= 1
+			window.environment()
+			if window.jump(window.enemy_x) == 0:
+				window.enemy_x = int(gfx.x - window.player_x - 4)
+
+			sleep(frame_break)
+
 		round()
 
 	else:
 		frame()
 		round()
+
+window.size_check()			# \
+window.environment()		# Initial frames.
+window.idle(window.enemy_x)	# /
 
 round()
 
