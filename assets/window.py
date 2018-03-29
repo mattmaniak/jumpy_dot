@@ -5,8 +5,21 @@ import assets.gfx as gfx
 
 player_x = int(10) # Adjustable player position.
 enemy_x = int(gfx.x - player_x - 4) # Enemy starting position.
+score = int(0)
 
-def size_check():
+def max_score():
+	global score
+
+	if score >= 0x7fffffff: # 2147483647
+		gfx.clearline()
+
+		print(gfx.error,
+			"Python has dynamic typing but God save the int!",
+			score, gfx.default)
+
+		sys_exit()
+
+def winsize_check():
 	if gfx.x > 1024 or gfx.y > 1024:
 		print("Window size error!")
 		sys_exit()
@@ -17,7 +30,13 @@ def size_check():
 
 # Non-playable area with clouds, above playable area.
 def environment():
-	gfx.horizontal_border()
+	global score
+	score_len = len(str(score))
+
+	print("Score:", score)
+
+	for i in range(gfx.y - score_len - 7):
+		print(end = "")
 
 	for i in range(gfx.y - 4): # Environment height.
 		print(gfx.white + "#", end = "" + gfx.default) # Left border.

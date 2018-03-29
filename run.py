@@ -10,7 +10,7 @@ from sys import stdin
 import assets.gfx as gfx
 import assets.window as window
 
-frame_break = float(0.1) # Time to render single frame.
+frame_break = float(0.05) # Time to render single frame.
 # It's also affects on the clouds and enemies speeds.
 
 def frame():
@@ -29,13 +29,15 @@ def keypress():
 
 def round():
 	if keypress() == 1:
-		tcflush(stdin, TCIOFLUSH)
+		tcflush(stdin, TCIOFLUSH) # Flush input buffer.
 
 		for i in range(30): # Jump width.
 			window.enemy_x -= 1
 			window.environment()
 			if window.jump(window.enemy_x) == 0:
 				window.enemy_x = int(gfx.x - window.player_x - 4)
+				window.score += 1
+				window.max_score()
 
 			sleep(frame_break)
 
@@ -45,7 +47,7 @@ def round():
 		frame()
 		round()
 
-window.size_check()			# \
+window.winsize_check()		# \
 window.environment()		# Initial frames.
 window.idle(window.enemy_x)	# /
 
