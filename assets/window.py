@@ -7,25 +7,13 @@ player_x = int(10) # Adjustable player position.
 enemy_x = int(gfx.x - player_x - 4) # Enemy starting position.
 score = int(0)
 
-def max_score():
-	global score
-
-	if score >= 0x7fffffff: # 2147483647
-		gfx.clearline()
-
-		print(gfx.error,
-			"Python has dynamic typing but God save the int!",
-			score, gfx.default)
-
-		sys_exit()
-
 def winsize_check():
 	if gfx.x > 1024 or gfx.y > 1024:
-		print("Window size error!")
+		print(gfx.error + "Window to big error!" + gfx.default)
 		sys_exit()
 
 	if gfx.x < player_x + 5 or gfx.y < 4:
-		print("Window size error!")
+		print(gfx.error + "Window to small error!" + gfx.default)
 		sys_exit()
 
 # Non-playable area with clouds, above playable area.
@@ -75,7 +63,7 @@ def jump(enemy_x):
 
 	print(gfx.white_b + "#" + gfx.default) # Fixed border after the enemy.
 
-	if enemy_x + player_x + 1 < 0: # 0 value makes 1 space between models.
+	if enemy_x + player_x + 1 < 0: # Enemy at the end of the map (left).
 		return 0
 
 
@@ -99,7 +87,7 @@ def idle(enemy_x):
 
 	gfx.player()
 
-	for i in range(enemy_x): # Space chars after the player.
+	for i in range(enemy_x): # Spaces before the enemy.
 		print(end = " ")
 
 	gfx.enemy()
@@ -109,8 +97,21 @@ def idle(enemy_x):
 
 	print(gfx.white_b + "#" + gfx.default) # Fixed border after the enemy.
 
-	if enemy_x < 0: # 0 value makes 1 space between models.
+	if enemy_x == 0: # 0 value makes 1 space between models.
 		gfx.clearline()
 		print(gfx.bright_blue + "Your score:", score, gfx.default)
+		sys_exit()
+
+
+def score_check():
+	global score
+
+	if score >= 0x7fffffff: # 2147483647
+		gfx.clearline()
+
+		print(gfx.error
+			+ "Python has dynamic typing but God save the int!",
+			score, gfx.default)
+
 		sys_exit()
 
