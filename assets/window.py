@@ -3,7 +3,7 @@ from sys import exit as sys_exit
 
 import assets.gfx as gfx
 
-player_x = int(10) # Adjustable player position.
+player_x = int(70) # Adjustable player position.
 enemy_x = int(gfx.x - player_x - 4) # Enemy starting position.
 score = int(0)
 
@@ -24,7 +24,7 @@ def environment():
 	print(gfx.bright_blue + "Score:", score, gfx.default)
 
 	for i in range(gfx.y - 4): # Environment height.
-		print(gfx.white_b + "#", end = "" + gfx.default) # Left border.
+		print(gfx.white_b + "#" + gfx.default, end = "") # Left border.
 
 		for i in range(gfx.x - 2): # Spaces after left border.
 			print(end = " ") # Environment empty area.
@@ -37,7 +37,7 @@ def jump(enemy_x):
 	global player_x
 
 	# Upper part of the playable_area.
-	print(gfx.white_b + "#", end = "" + gfx.default) # Left border.
+	print(gfx.white_b + "#" + gfx.default, end = "") # Left border.
 
 	for i in range(player_x): # Spaces after left border.
 		print(end = " ")
@@ -51,7 +51,7 @@ def jump(enemy_x):
 
 	# Lower part of the playable_area.
 	# Left, fixed border before the Player.
-	print(gfx.white_b + "#", end = "" + gfx.default)
+	print(gfx.white_b + "#" + gfx.default, end = "")
 
 	for i in range(player_x + 1 + enemy_x):
 		print(end = " ") # Spaces before the enemy, when the player jumps.
@@ -63,15 +63,15 @@ def jump(enemy_x):
 
 	print(gfx.white_b + "#" + gfx.default) # Fixed border after the enemy.
 
-	if enemy_x + player_x + 1 < 0: # Enemy at the end of the map (left).
+	if enemy_x + player_x < 0: # Enemy at the end of the map (left).
 		return 0
 
 
-def idle(enemy_x):
+def no_enemy_idle(enemy_x):
 	global player_x
 
 	# Upper part of the playable_area.
-	print(gfx.white_b + "#", end = "" + gfx.default) # Left border.
+	print(gfx.white_b + "#" + gfx.default, end = "") # Left border.
 
 	for i in range(gfx.x - 2): # Spaces after left border.
 		print(end = " ")
@@ -80,7 +80,32 @@ def idle(enemy_x):
 
 	# Lower part of the playable_area.
 	# Left, fixed border before the Player.
-	print(gfx.white_b + "#", end = "" + gfx.default)
+	print(gfx.white_b + "#" + gfx.default, end = "")
+
+	for i in range(player_x): # Spaces before the player.
+		print(end = " ")
+
+	gfx.player()
+
+	for i in range(enemy_x + 1): # Spaces before the enemy.
+		print(end = " ")
+
+	print(gfx.white_b + "#" + gfx.default) # Fixed border after the enemy.
+
+def idle(enemy_x):
+	global player_x
+
+	# Upper part of the playable_area.
+	print(gfx.white_b + "#" + gfx.default, end = "") # Left border.
+
+	for i in range(gfx.x - 2): # Spaces after left border.
+		print(end = " ")
+
+	print(gfx.white_b + "#" + gfx.default) # Right border.
+
+	# Lower part of the playable_area.
+	# Left, fixed border before the Player.
+	print(gfx.white_b + "#" + gfx.default, end = "")
 
 	for i in range(player_x): # Spaces before the player.
 		print(end = " ")
@@ -101,6 +126,9 @@ def idle(enemy_x):
 		gfx.clearline()
 		print(gfx.bright_blue + "Your score:", score, gfx.default)
 		sys_exit()
+
+	if enemy_x < 0:
+		return 0
 
 
 def score_check():
