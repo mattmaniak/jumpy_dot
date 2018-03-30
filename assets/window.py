@@ -3,7 +3,7 @@ from sys import exit as sys_exit
 
 import assets.gfx as gfx
 
-player_x = int(70) # Adjustable player position.
+player_x = int(10) # Adjustable player position.
 enemy_x = int(gfx.x - player_x - 4) # Enemy starting position.
 score = int(0)
 
