@@ -28,7 +28,7 @@ def frame():
 		window.score += 1
 		window.score_check()
 
-		for i in range(2):
+		for i in range(2): # Remove above print (window.idle).
 			gfx.clearline()
 
 		window.idle_reversed(window.enemy_x)

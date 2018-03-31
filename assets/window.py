@@ -61,7 +61,7 @@ def jump(enemy_x):
 	for i in range(gfx.x - player_x - enemy_x - 4):
 		print(end = " ") # Space chars after the Enemy.
 
-	print(gfx.white_b + "#" + gfx.default) # Fixed border after the enemy.
+	print(gfx.white_b + "#" + gfx.default) # Border after the enemy.
 
 	if enemy_x + player_x < 0: # Enemy at the end of the map (left).
 		return 0
@@ -90,7 +90,8 @@ def idle_no_enemy(enemy_x):
 	for i in range(enemy_x + 1): # Spaces before the enemy.
 		print(end = " ")
 
-	print(gfx.white_b + "#" + gfx.default) # Fixed border after the enemy.
+	print(gfx.white_b + "#" + gfx.default) # Border after the enemy.
+
 
 def idle_reversed(enemy_x): # Enemy before the player.
 	global player_x
@@ -120,15 +121,7 @@ def idle_reversed(enemy_x): # Enemy before the player.
 	for i in range(gfx.x - player_x - 3): # - enemy_x - 4
 		print(end = " ") # Space chars after the Player.
 
-	print(gfx.white_b + "#" + gfx.default) # Fixed border after the enemy.
-
-	if enemy_x == 0: # 0 value makes 1 space between models.
-		gfx.clearline()
-		print(gfx.bright_blue + "Your score:", score, gfx.default)
-		sys_exit()
-
-	if enemy_x < 0:
-		return 0
+	print(gfx.white_b + "#" + gfx.default) # Border after the enemy.
 
 
 def idle(enemy_x):
@@ -159,14 +152,14 @@ def idle(enemy_x):
 	for i in range(gfx.x - player_x - enemy_x - 4):
 		print(end = " ") # Space chars after the Enemy.
 
-	print(gfx.white_b + "#" + gfx.default) # Fixed border after the enemy.
+	print(gfx.white_b + "#" + gfx.default) # Border after the enemy.
 
-	if enemy_x == 0: # 0 value makes 1 space between models.
+	if enemy_x == -1: # 0 value makes 1 space between models.
 		gfx.clearline()
 		print(gfx.bright_blue + "Your score:", score, gfx.default)
 		sys_exit()
 
-	if enemy_x < 0:
+	if enemy_x < -1:
 		return 0
 
 
