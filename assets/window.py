@@ -3,7 +3,7 @@ from sys import exit as sys_exit
 
 import assets.gfx as gfx
 
-player_x = int(10) # Adjustable player position.
+player_x = int(80) # Adjustable player position.
 enemy_x = int(gfx.x - player_x - 4) # Enemy starting position.
 score = int(0)
 
@@ -67,7 +67,7 @@ def jump(enemy_x):
 		return 0
 
 
-def no_enemy_idle(enemy_x):
+def idle_no_enemy(enemy_x):
 	global player_x
 
 	# Upper part of the playable_area.
@@ -91,6 +91,45 @@ def no_enemy_idle(enemy_x):
 		print(end = " ")
 
 	print(gfx.white_b + "#" + gfx.default) # Fixed border after the enemy.
+
+def idle_reversed(enemy_x): # Enemy before the player.
+	global player_x
+
+	# Upper part of the playable_area.
+	print(gfx.white_b + "#" + gfx.default, end = "") # Left border.
+
+	for i in range(gfx.x - 2): # Spaces after left border.
+		print(end = " ")
+
+	print(gfx.white_b + "#" + gfx.default) # Right border.
+
+	# Lower part of the playable_area.
+	# Left, fixed border before the Player.
+	print(gfx.white_b + "#" + gfx.default, end = "")
+
+	for i in range(player_x - 1): # Spaces before the enemy.
+		print(end = " ")
+
+	gfx.enemy()
+
+	for i in range(-enemy_x): # Spaces before the player.
+		print(end = " ")
+
+	gfx.player()
+
+	for i in range(gfx.x - player_x - 3): # - enemy_x - 4
+		print(end = " ") # Space chars after the Player.
+
+	print(gfx.white_b + "#" + gfx.default) # Fixed border after the enemy.
+
+	if enemy_x == 0: # 0 value makes 1 space between models.
+		gfx.clearline()
+		print(gfx.bright_blue + "Your score:", score, gfx.default)
+		sys_exit()
+
+	if enemy_x < 0:
+		return 0
+
 
 def idle(enemy_x):
 	global player_x
