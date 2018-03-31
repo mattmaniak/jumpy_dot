@@ -45,6 +45,9 @@ window.environment()					# Initial frames.
 window.idle_no_enemy(window.enemy_x)	# /
 sleep(enemy_break)						# Time stop before the game start.
 
+window.environment()			# \
+window.idle(window.enemy_x)		# Necessary to show the enemy at the end.
+
 while 1:
 	if keypress() == 1:
 		tcflush(stdin, TCIOFLUSH) # Flush input buffer.
