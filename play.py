@@ -11,10 +11,10 @@ import assets.gfx as gfx
 import assets.window as window
 
 enemy_break = randint(0, 3)
-frame_break = float(0.5) # Time to render single frame.
+frame_break = float(0.1) # Time to render single frame.
 # It's also affects on the clouds and enemies speeds.
 
-def flush_previous_frame():
+def flush_previous_frame(): # Render the game in a single frame.
 	for i in range(gfx.y - 1):
 		gfx.clearline()
 		stdout.flush()
@@ -39,7 +39,13 @@ def keypress():
 	if key: # key ('Enter' is the best way) is pressed: print with jump.
 		return 1
 
-def main(): # Also game logic.
+
+window.winsize_check()					# \
+window.environment()					# Initial frames.
+window.idle_no_enemy(window.enemy_x)	# /
+sleep(enemy_break)						# Time stop before the game start.
+
+while 1:
 	if keypress() == 1:
 		tcflush(stdin, TCIOFLUSH) # Flush input buffer.
 
@@ -53,17 +59,14 @@ def main(): # Also game logic.
 				window.enemy_x = int(gfx.x - window.player_x - 4)
 
 			sleep(frame_break)
-		main()
+#		main()
 
 	else:
 #		flush_previous_frame()
 		frame()
-		main()
+#		main()
 
-window.winsize_check()					# \
-window.environment()					# Initial frames.
-window.idle_no_enemy(window.enemy_x)	# /
-sleep(enemy_break)
 
-main()
+
+#main()
 
