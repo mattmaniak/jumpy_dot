@@ -62,14 +62,8 @@ while 1:
 				window.enemy_x = int(gfx.x - window.player_x - 4)
 
 			sleep(frame_break)
-#		main()
 
 	else:
 #		flush_previous_frame()
 		frame()
-#		main()
-
-
-
-#main()
 
