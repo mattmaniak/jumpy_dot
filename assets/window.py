@@ -13,7 +13,7 @@ def environment():
 
 	print(gfx.bright_blue + "Score:", score, gfx.default)
 
-	for i in range(gfx.y - 4): # Environment height.
+	for i in range(gfx.y - 5): # Environment height.
 		print(gfx.white + "#" + gfx.default, end = "") # Left border.
 
 		for i in range(gfx.x - 2): # Spaces after left border.
@@ -114,6 +114,13 @@ def idle_no_enemy():
 		print(end = " ")
 
 	print(gfx.white + "#" + gfx.default) # Border after the enemy.
+
+
+def floor():
+	for i in range(gfx.x - 1):
+		print(gfx.bright_blue + "#", end = "")
+
+	print("#" + gfx.default)
 
 
 def winsize_check():

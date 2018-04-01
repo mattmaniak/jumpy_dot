@@ -39,6 +39,7 @@ def frame():
 			gfx.clearline()
 
 		window.idle_no_enemy()
+		window.floor()
 		rng()
 
 def keypress():
@@ -48,13 +49,17 @@ def keypress():
 		return 1
 
 
-window.winsize_check()	# \
-window.environment()	# Initial frames.
-window.idle_no_enemy()	# /
+window.winsize_check()
+
+window.environment()	# \
+window.idle_no_enemy()	# Initial frames.
+window.floor()			# /
+
 rng()					# Time stop before the game start.
 
 window.environment()			# \
 window.idle(window.enemy_x)		# Necessary to show the enemy at the end.
+window.floor()					# /
 
 while 1:
 	if keypress() == 1:
@@ -69,9 +74,11 @@ while 1:
 			if window.jump(window.enemy_x) == 0:
 				window.enemy_x = int(gfx.x - window.player_x - 4)
 
+			window.floor()
 			sleep(frame_break)
 
 	else:
 #		flush_previous_frame()
 		frame()
+		window.floor()
 
