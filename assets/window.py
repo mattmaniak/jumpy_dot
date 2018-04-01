@@ -3,9 +3,14 @@ from sys import exit as sys_exit
 
 import assets.gfx as gfx
 
-player_x = int(10) # Adjustable player position.
-enemy_x = int(gfx.x - player_x - 4) # Enemy starting position.
 score = int(0)
+enemy_x = int(gfx.x - player_x - 4) # Enemy starting position.
+
+if gfx.x % 2 == 0:
+	player_x = int(gfx.x / 2)
+
+else:
+	player_x = int((gfx.x + 1) / 2)
 
 # Non-playable area with clouds, above playable area.
 def environment():
