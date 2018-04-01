@@ -12,8 +12,10 @@ error = str("\033[41;30m") # Black text with red background.
 green = str("\033[32m") # Green text.
 bright_blue = str("\033[94m")
 
+bright_yellow = str("\033[93m")
+
 # Blocks
-red_b = str("\033[41;31m")
+red = str("\033[31m")
 green_b = str("\033[42;32m")
 white_b = str("\033[47;37m")
 bright_blue_b = str("\033[104;94m")
@@ -31,8 +33,8 @@ def clearline():
 	stdout.write("\033[K") # Clear the line.
 
 def enemy(): # Models.
-	print(red_b + "#" + default, end = "")
+	print(red + "@" + default, end = "")
 
 def player():
-	print(green_b + "#" + default, end = "")
+	print(bright_yellow + "*" + default, end = "")
 
