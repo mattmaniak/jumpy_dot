@@ -7,15 +7,6 @@ player_x = int(10) # Adjustable player position.
 enemy_x = int(gfx.x - player_x - 4) # Enemy starting position.
 score = int(0)
 
-def winsize_check():
-	if gfx.x > 1024 or gfx.y > 1024:
-		print(gfx.error + "Window to big error!" + gfx.default)
-		sys_exit()
-
-	if gfx.x < player_x + 5 or gfx.y < 4:
-		print(gfx.error + "Window to small error!" + gfx.default)
-		sys_exit()
-
 # Non-playable area with clouds, above playable area.
 def environment():
 	score_len = len(str(score))
@@ -123,6 +114,16 @@ def idle_no_enemy():
 		print(end = " ")
 
 	print(gfx.white_b + "#" + gfx.default) # Border after the enemy.
+
+
+def winsize_check():
+	if gfx.x > 1024 or gfx.y > 1024:
+		print(gfx.error + "Window to big error!" + gfx.default)
+		sys_exit()
+
+	if gfx.x < player_x + 5 or gfx.y < 4:
+		print(gfx.error + "Window to small error!" + gfx.default)
+		sys_exit()
 
 
 def score_check():

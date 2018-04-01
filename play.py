@@ -10,7 +10,7 @@ from sys import stdin, stdout
 import assets.gfx as gfx
 import assets.window as window
 
-frame_break = float(0.05) # Time to render single frame.
+frame_break = float(0.07) # Time to render single frame.
 # It's also affects on the clouds and enemies speeds.
 
 def rng():
@@ -22,10 +22,15 @@ def flush_previous_frame(): # Render the game in a single frame.
 		stdout.flush()
 
 def frame():
+	global frame_break
+
 	window.enemy_x -= 1
 	window.environment()
 
 	if window.idle(window.enemy_x) == 0:
+		if frame_break > 0.02: # Maximum speed of the game.		
+			frame_break -= 0.01
+
 		window.score += 1
 		window.score_check()
 		window.enemy_x = int(gfx.x - window.player_x - 4)
