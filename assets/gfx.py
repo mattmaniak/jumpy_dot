@@ -7,18 +7,13 @@ x = int(x)
 y = int(y)
 
 # ANSI escape codes. First three: normal text, color blocks on the bottom.
-default = str("\033[0m") # Terminal default text.
-error = str("\033[41;30m") # Black text with red background.
-green = str("\033[32m") # Green text.
-bright_blue = str("\033[94m")
+default = str("\033[0m")		# Terminal default text.
+error = str("\033[41;30m")		# Black text with red background.
+red = str("\033[31m")			# Color of enemies.
+bright_green = str("\033[92m")	# Colot of the player.
+bright_blue = str("\033[94m")	# Bright blue text.
 
-bright_yellow = str("\033[93m")
-
-# Blocks
-red = str("\033[31m")
-green_b = str("\033[42;32m")
-white_b = str("\033[47;37m")
-bright_blue_b = str("\033[104;94m")
+white = str("\033[37m")			# Used for window debuggung.
 
 def horizontal_border():
 	for i in range(x):
@@ -36,5 +31,5 @@ def enemy(): # Models.
 	print(red + "@" + default, end = "")
 
 def player():
-	print(bright_yellow + "*" + default, end = "")
+	print(bright_green + "*" + default, end = "")
 

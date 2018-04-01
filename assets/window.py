@@ -14,18 +14,18 @@ def environment():
 	print(gfx.bright_blue + "Score:", score, gfx.default)
 
 	for i in range(gfx.y - 4): # Environment height.
-		print(gfx.white_b + "#" + gfx.default, end = "") # Left border.
+		print(gfx.white + "#" + gfx.default, end = "") # Left border.
 
 		for i in range(gfx.x - 2): # Spaces after left border.
 			print(end = " ") # Environment empty area.
 
-		print(gfx.white_b + "#" + gfx.default) # Right border.
+		print(gfx.white + "#" + gfx.default) # Right border.
 
 
 # Area where Player takes activities with Enemies.
 def jump(enemy_x):
 	# Upper part of the playable_area.
-	print(gfx.white_b + "#" + gfx.default, end = "") # Left border.
+	print(gfx.white + "#" + gfx.default, end = "") # Left border.
 
 	for i in range(player_x): # Spaces after left border.
 		print(end = " ")
@@ -35,11 +35,11 @@ def jump(enemy_x):
 	for i in range(gfx.x - player_x - 3): # Spaces before the left border.
 		print(end = " ")
 
-	print(gfx.white_b + "#" + gfx.default) # Right border.
+	print(gfx.white + "#" + gfx.default) # Right border.
 
 	# Lower part of the playable_area.
 	# Left, fixed border before the Player.
-	print(gfx.white_b + "#" + gfx.default, end = "")
+	print(gfx.white + "#" + gfx.default, end = "")
 
 	for i in range(player_x + 1 + enemy_x):
 		print(end = " ") # Spaces before the enemy, when the player jumps.
@@ -49,7 +49,7 @@ def jump(enemy_x):
 	for i in range(gfx.x - player_x - enemy_x - 4):
 		print(end = " ") # Space chars after the Enemy.
 
-	print(gfx.white_b + "#" + gfx.default) # Border after the enemy.
+	print(gfx.white + "#" + gfx.default) # Border after the enemy.
 
 	if enemy_x + player_x < 0: # Enemy at the end of the map (left).
 		return 0
@@ -57,16 +57,16 @@ def jump(enemy_x):
 
 def idle(enemy_x):
 	# Upper part of the playable_area.
-	print(gfx.white_b + "#" + gfx.default, end = "") # Left border.
+	print(gfx.white + "#" + gfx.default, end = "") # Left border.
 
 	for i in range(gfx.x - 2): # Spaces after left border.
 		print(end = " ")
 
-	print(gfx.white_b + "#" + gfx.default) # Right border.
+	print(gfx.white + "#" + gfx.default) # Right border.
 
 	# Lower part of the playable_area.
 	# Left, fixed border before the Player.
-	print(gfx.white_b + "#" + gfx.default, end = "")
+	print(gfx.white + "#" + gfx.default, end = "")
 
 	for i in range(player_x): # Spaces before the player.
 		print(end = " ")
@@ -81,7 +81,7 @@ def idle(enemy_x):
 	for i in range(gfx.x - player_x - enemy_x - 4):
 		print(end = " ") # Space chars after the Enemy.
 
-	print(gfx.white_b + "#" + gfx.default) # Border after the enemy.
+	print(gfx.white + "#" + gfx.default) # Border after the enemy.
 
 	if enemy_x == -1: # 0 value makes 1 space between models.
 		gfx.clearline()
@@ -94,16 +94,16 @@ def idle(enemy_x):
 
 def idle_no_enemy():
 	# Upper part of the playable_area.
-	print(gfx.white_b + "#" + gfx.default, end = "") # Left border.
+	print(gfx.white + "#" + gfx.default, end = "") # Left border.
 
 	for i in range(gfx.x - 2): # Spaces after left border.
 		print(end = " ")
 
-	print(gfx.white_b + "#" + gfx.default) # Right border.
+	print(gfx.white + "#" + gfx.default) # Right border.
 
 	# Lower part of the playable_area.
 	# Left, fixed border before the Player.
-	print(gfx.white_b + "#" + gfx.default, end = "")
+	print(gfx.white + "#" + gfx.default, end = "")
 
 	for i in range(player_x): # Spaces before the player.
 		print(end = " ")
@@ -113,7 +113,7 @@ def idle_no_enemy():
 	for i in range(enemy_x + 1): # Spaces before the enemy.
 		print(end = " ")
 
-	print(gfx.white_b + "#" + gfx.default) # Border after the enemy.
+	print(gfx.white + "#" + gfx.default) # Border after the enemy.
 
 
 def winsize_check():
