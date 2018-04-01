@@ -57,6 +57,8 @@ window.floor()			# /
 
 rng()					# Time stop before the game start.
 
+flush_previous_frame()
+
 window.environment()			# \
 window.idle(window.enemy_x)		# Necessary to show the enemy at the end.
 window.floor()					# /
@@ -68,7 +70,7 @@ while 1:
 		for i in range(5): # Jump width. Must be smaller than player_x.
 			window.enemy_x -= 1
 
-#			flush_previous_frame()
+			flush_previous_frame()
 			window.environment()
 
 			if window.jump(window.enemy_x) == 0:
@@ -78,7 +80,7 @@ while 1:
 			sleep(frame_break)
 
 	else:
-#		flush_previous_frame()
+		flush_previous_frame()
 		frame()
 		window.floor()
 
