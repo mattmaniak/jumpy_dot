@@ -39,6 +39,12 @@ def environment(): # Non-playable area above the playable area.
 
 		print(gfx.white + "#" + gfx.default) # Right border.
 
+def floor(): # Long block under the player and enemies.
+	for i in range(gfx.x_size - 1):
+		print(gfx.bright_blue + "#", end = "")
+
+	print("#" + gfx.default)
+
 def jump(enemy_x): # Frame rendered when the player jumps.
 	# Upper part of the playable_area.
 	print(gfx.white + "#" + gfx.default, end = "") # Left border.
@@ -66,6 +72,8 @@ def jump(enemy_x): # Frame rendered when the player jumps.
 		print(end = " ") # Space chars after the Enemy.
 
 	print(gfx.white + "#" + gfx.default) # Border after the enemy.
+
+	floor()
 
 	if enemy_x + player_x < 0: # Enemy at the end of the map (left).
 		return 0
@@ -98,6 +106,8 @@ def idle(enemy_x): # Scenario when there are no activities from the player.
 
 	print(gfx.white + "#" + gfx.default) # Border after the enemy.
 
+	floor()
+
 	if enemy_x == -1: # 0 value makes 1 space between models.
 		gfx.clearline()
 		print(gfx.bright_blue + "Your score:", score, gfx.default)
@@ -106,8 +116,7 @@ def idle(enemy_x): # Scenario when there are no activities from the player.
 	if enemy_x < -1:
 		return 0
 
-
-def idle_no_enemy(not_first_enemy):	# Rendered like above but without enemy.
+def idle_no_enemy():	# Rendered like above but without enemy.
 	# Upper part of the playable_area.
 	print(gfx.white + "#" + gfx.default, end = "") # Left border.
 
@@ -116,8 +125,8 @@ def idle_no_enemy(not_first_enemy):	# Rendered like above but without enemy.
 
 	print(gfx.white + "#" + gfx.default) # Right border.
 
-	if not_first_enemy == 1:	# Clears above section on the screen
-		gfx.clearline()			# to fix to tall window.
+#	if not_first_enemy == 1:	# Clears above section on the screen
+#		gfx.clearline()			# to fix to tall window.
 
 	# Lower part of the playable_area.
 	# Left, fixed border before the Player.
@@ -133,12 +142,7 @@ def idle_no_enemy(not_first_enemy):	# Rendered like above but without enemy.
 
 	print(gfx.white + "#" + gfx.default) # Border after the enemy.
 
-def floor(): # Long block under the player and enemies.
-	for i in range(gfx.x_size - 1):
-		print(gfx.bright_blue + "#", end = "")
-
-	print("#" + gfx.default)
-
+	floor()
 
 # Any other functions.
 def score_check():	# Score checker to provide a glory of the integer.

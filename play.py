@@ -10,7 +10,6 @@ from sys import stdin, stdout
 import assets.gfx as gfx
 import assets.window as window
 
-
 frame_break = float(0.1) # Time to render single frame.
 # It's also affects on the clouds and enemies speeds.
 
@@ -28,19 +27,19 @@ def frame():
 	window.enemy_x -= 1
 	window.environment()
 
-	if window.idle(window.enemy_x) == 0:
+	if window.idle(window.enemy_x) == 0: # Enemy behind the player.
 		if frame_break > 0.05: # Maximum speed of the game.
 			frame_break -= 0.01
 
 		window.score += 1
 		window.score_check()
+
+		flush_previous_frame()
+
 		window.enemy_x = int(gfx.x_size - window.player_x - 4)
 
-		for i in range(2): # Remove above print (window.idle).
-			gfx.clearline()
-
-		window.idle_no_enemy(1) # 1 means 'not first enemy'.
-		window.floor()
+		window.environment()
+		window.idle_no_enemy()
 		rng()
 
 def keypress():
@@ -53,16 +52,13 @@ def keypress():
 window.winsize_check()
 
 window.environment()	# \
-window.idle_no_enemy(0)	# Initial frames.
-window.floor()			# /
+window.idle_no_enemy()	# Initial frames.
 
 rng()					# Time stop before the game start.
-
 flush_previous_frame()
 
 window.environment()			# \
 window.idle(window.enemy_x)		# Necessary to show the enemy at the end.
-window.floor()					# /
 
 while 1:
 	if keypress() == 1:
@@ -74,14 +70,12 @@ while 1:
 #			flush_previous_frame()
 			window.environment()
 
-			if window.jump(window.enemy_x) == 0:
+			if window.jump(window.enemy_x) == 0: # Enemy behind the player.
 				window.enemy_x = int(gfx.x_size - window.player_x - 4)
 
-			window.floor()
 			sleep(frame_break)
 
 	else:
 #		flush_previous_frame()
 		frame()
-		window.floor()
 
