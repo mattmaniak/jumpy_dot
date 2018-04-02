@@ -5,7 +5,7 @@ import assets.gfx as gfx
 
 score = int(0)
 
-if gfx.x % 2 == 0:
+if gfx.x % 2 == 0:	# Player centering.
 	player_x = int(gfx.x / 2)
 else:
 	player_x = int((gfx.x + 1) / 2)

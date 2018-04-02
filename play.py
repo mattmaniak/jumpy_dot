@@ -28,7 +28,7 @@ def frame():
 	window.environment()
 
 	if window.idle(window.enemy_x) == 0:
-		if frame_break > 0.05: # Maximum speed of the game.		
+		if frame_break > 0.05: # Maximum speed of the game.
 			frame_break -= 0.01
 
 		window.score += 1
@@ -43,6 +43,7 @@ def frame():
 		rng()
 
 def keypress():
+	print("Press [enter] to jump.", end = "")
 	key, foo, bar = select([stdin], [], [], frame_break)
 
 	if key: # key ('Enter' is the best way) is pressed: print with jump.
@@ -53,7 +54,7 @@ window.winsize_check()
 
 window.environment()	# \
 window.idle_no_enemy()	# Initial frames.
-window.floor()			# /
+window.floor()		# /
 
 rng()					# Time stop before the game start.
 
@@ -61,13 +62,13 @@ flush_previous_frame()
 
 window.environment()			# \
 window.idle(window.enemy_x)		# Necessary to show the enemy at the end.
-window.floor()					# /
+window.floor()				# /
 
 while 1:
 	if keypress() == 1:
 		tcflush(stdin, TCIOFLUSH) # Flush input buffer.
 
-		for i in range(1): # Jump width. Must be smaller than player_x.
+		for i in range(2): # Jump width. Must be smaller than player_x.
 			window.enemy_x -= 1
 
 			flush_previous_frame()
