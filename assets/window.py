@@ -3,32 +3,43 @@ from sys import exit as sys_exit
 
 import assets.gfx as gfx
 
+
+# Miscellaneous responsible for side things.
+if gfx.x_size % 2 == 0: # Player centering.
+	player_x = int(gfx.x_size / 2)
+else:
+	player_x = int((gfx.x_size + 1) / 2)
+
+enemy_x = int(gfx.x_size - player_x - 4) # Enemy starting position.
 score = int(0)
 
-if gfx.x % 2 == 0:	# Player centering.
-	player_x = int(gfx.x / 2)
-else:
-	player_x = int((gfx.x + 1) / 2)
+def winsize_check(): # Check window size.
+	if gfx.x_size > 320 or gfx.y_size > 128:
+		print(gfx.error + "Screen to big! Game experience might be low!"
+		+ gfx.default)
 
-enemy_x = int(gfx.x - player_x - 4) # Enemy starting position.
+		sys_exit()
 
-# Non-playable area with clouds, above playable area.
-def environment():
+	if gfx.x_size < player_x + 5 or gfx.y_size < 4:
+		print(gfx.error + "Window to small error!" + gfx.default)
+		sys_exit()
+
+
+# Main areas to render on the screen.
+def environment(): # Non-playable area above the playable area.
 	score_len = len(str(score))
 
 	print(gfx.bright_blue + "Score:", score, gfx.default)
 
-	for i in range(gfx.y - 5): # Environment height.
+	for i in range(gfx.y_size - 5): # Environment height.
 		print(gfx.white + "#" + gfx.default, end = "") # Left border.
 
-		for i in range(gfx.x - 2): # Spaces after left border.
+		for i in range(gfx.x_size - 2): # Spaces after left border.
 			print(end = " ") # Environment empty area.
 
 		print(gfx.white + "#" + gfx.default) # Right border.
 
-
-# Area where Player takes activities with Enemies.
-def jump(enemy_x):
+def jump(enemy_x): # Frame rendered when the player jumps.
 	# Upper part of the playable_area.
 	print(gfx.white + "#" + gfx.default, end = "") # Left border.
 
@@ -37,7 +48,7 @@ def jump(enemy_x):
 
 	gfx.player()
 
-	for i in range(gfx.x - player_x - 3): # Spaces before the left border.
+	for i in range(gfx.x_size - player_x - 3): # Spaces before the left border.
 		print(end = " ")
 
 	print(gfx.white + "#" + gfx.default) # Right border.
@@ -51,7 +62,7 @@ def jump(enemy_x):
 
 	gfx.enemy()
 
-	for i in range(gfx.x - player_x - enemy_x - 4):
+	for i in range(gfx.x_size - player_x - enemy_x - 4):
 		print(end = " ") # Space chars after the Enemy.
 
 	print(gfx.white + "#" + gfx.default) # Border after the enemy.
@@ -59,12 +70,11 @@ def jump(enemy_x):
 	if enemy_x + player_x < 0: # Enemy at the end of the map (left).
 		return 0
 
-
-def idle(enemy_x):
+def idle(enemy_x): # Scenario when there are no activities from the player.
 	# Upper part of the playable_area.
 	print(gfx.white + "#" + gfx.default, end = "") # Left border.
 
-	for i in range(gfx.x - 2): # Spaces after left border.
+	for i in range(gfx.x_size - 2): # Spaces after left border.
 		print(end = " ")
 
 	print(gfx.white + "#" + gfx.default) # Right border.
@@ -83,7 +93,7 @@ def idle(enemy_x):
 
 	gfx.enemy()
 
-	for i in range(gfx.x - player_x - enemy_x - 4):
+	for i in range(gfx.x_size - player_x - enemy_x - 4):
 		print(end = " ") # Space chars after the Enemy.
 
 	print(gfx.white + "#" + gfx.default) # Border after the enemy.
@@ -97,14 +107,17 @@ def idle(enemy_x):
 		return 0
 
 
-def idle_no_enemy():
+def idle_no_enemy(not_first_enemy):	# Rendered like above but without enemy.
 	# Upper part of the playable_area.
 	print(gfx.white + "#" + gfx.default, end = "") # Left border.
 
-	for i in range(gfx.x - 2): # Spaces after left border.
+	for i in range(gfx.x_size - 2): # Spaces after left border.
 		print(end = " ")
 
 	print(gfx.white + "#" + gfx.default) # Right border.
+
+	if not_first_enemy == 1:	# Clears above section on the screen
+		gfx.clearline()			# to fix to tall window.
 
 	# Lower part of the playable_area.
 	# Left, fixed border before the Player.
@@ -120,30 +133,20 @@ def idle_no_enemy():
 
 	print(gfx.white + "#" + gfx.default) # Border after the enemy.
 
-
-def floor():
-	for i in range(gfx.x - 1):
+def floor(): # Long block under the player and enemies.
+	for i in range(gfx.x_size - 1):
 		print(gfx.bright_blue + "#", end = "")
 
 	print("#" + gfx.default)
 
 
-def winsize_check():
-	if gfx.x > 1024 or gfx.y > 1024:
-		print(gfx.error + "Window to big error!" + gfx.default)
-		sys_exit()
-
-	if gfx.x < player_x + 5 or gfx.y < 4:
-		print(gfx.error + "Window to small error!" + gfx.default)
-		sys_exit()
-
-
-def score_check():
+# Any other functions.
+def score_check():	# Score checker to provide a glory of the integer.
 	if score >= 0x7fffffff: # 2147483647
 		gfx.clearline()
 
 		print(gfx.error
-			+ "Python has dynamic typing but God save the int!",
+			+ "Python supports bignums but God save the int!",
 			score, gfx.default)
 
 		sys_exit()
