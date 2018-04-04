@@ -11,8 +11,8 @@ y_size = int(y_size)
 default = str("\033[0m")		# Terminal default text.
 error = str("\033[41;30m")		# Black text with red background.
 red = str("\033[31m")			# Color of enemies.
-bright_green = str("\033[92m")	# Colot of the player.
-bright_blue = str("\033[94m")	# Bright blue text.
+green = str("\033[92m")	# Colot of the player.
+blue = str("\033[94m")	# Bright blue text.
 
 white = str("\033[37m")			# Used for window debuggung.
 
@@ -20,17 +20,14 @@ def horizontal_border():
 	for i in range(x):
 		print(white + "#" + default, end = "")
 
-def input_border():
-	for i in range(x - 1):
-		print(white + "#" + default, end = "")
-
 def clearline():
 	stdout.write("\033[F") # Back to the previous line.
 	stdout.write("\033[K") # Clear the line.
 
-def enemy(): # Models.
+# Models.
+def enemy():
 	print(red + "@" + default, end = "")
 
 def player():
-	print(bright_green + "*" + default, end = "")
+	print(green + "*" + default, end = "")
 

@@ -42,10 +42,10 @@ def environment(): # Non-playable area above the playable area.
 def floor(): # Long block under the player and enemies.
 	score_len = len(str(score))
 
-	print(gfx.bright_blue + "Score:", score, gfx.default, end = "")
+	print(gfx.blue + "Score:", score, gfx.default, end = "")
 
 	for i in range(gfx.x_size - score_len - 9):
-		print(gfx.bright_blue + "#", end = "")
+		print(gfx.blue + "#", end = "")
 
 	print("#" + gfx.default)
 
