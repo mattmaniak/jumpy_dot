@@ -67,7 +67,7 @@ while 1:
 		for i in range(2): # Jump width. Must be smaller than player_x.
 			window.enemy_x -= 1
 
-#			flush_previous_frame()
+			flush_previous_frame()
 			window.environment()
 
 			if window.jump(window.enemy_x) == 0: # Enemy behind the player.
@@ -76,6 +76,6 @@ while 1:
 			sleep(frame_break)
 
 	else:
-#		flush_previous_frame()
+		flush_previous_frame()
 		frame()
 

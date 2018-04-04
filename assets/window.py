@@ -1,5 +1,6 @@
 from random import randint
 from sys import exit as sys_exit
+from time import sleep
 
 import assets.gfx as gfx
 
@@ -27,9 +28,8 @@ def winsize_check(): # Check window size.
 
 # Main areas to render on the screen.
 def environment(): # Non-playable area above the playable area.
-	score_len = len(str(score))
-
-	print(gfx.bright_blue + "Score:", score, gfx.default)
+	for i in range(gfx.x_size):
+		print(gfx.white + "#" + gfx.default, end = "")
 
 	for i in range(gfx.y_size - 5): # Environment height.
 		print(gfx.white + "#" + gfx.default, end = "") # Left border.
@@ -40,7 +40,11 @@ def environment(): # Non-playable area above the playable area.
 		print(gfx.white + "#" + gfx.default) # Right border.
 
 def floor(): # Long block under the player and enemies.
-	for i in range(gfx.x_size - 1):
+	score_len = len(str(score))
+
+	print(gfx.bright_blue + "Score:", score, gfx.default, end = "")
+
+	for i in range(gfx.x_size - score_len - 9):
 		print(gfx.bright_blue + "#", end = "")
 
 	print("#" + gfx.default)
@@ -108,12 +112,11 @@ def idle(enemy_x): # Scenario when there are no activities from the player.
 
 	floor()
 
-	if enemy_x == -1: # 0 value makes 1 space between models.
-		gfx.clearline()
-		print(gfx.bright_blue + "Your score:", score, gfx.default)
+	if enemy_x == 0: # If colission then end the game.
+		sleep(5)
 		sys_exit()
 
-	if enemy_x < -1:
+	if enemy_x < 0:
 		return 0
 
 def idle_no_enemy():	# Rendered like above but without enemy.
@@ -124,9 +127,6 @@ def idle_no_enemy():	# Rendered like above but without enemy.
 		print(end = " ")
 
 	print(gfx.white + "#" + gfx.default) # Right border.
-
-#	if not_first_enemy == 1:	# Clears above section on the screen
-#		gfx.clearline()			# to fix to tall window.
 
 	# Lower part of the playable_area.
 	# Left, fixed border before the Player.
