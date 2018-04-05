@@ -4,7 +4,6 @@ from time import sleep
 
 import assets.gfx as gfx
 
-
 # Miscellaneous responsible for side things.
 if gfx.x_size % 2 == 0: # Player centering.
 	player_x = int(gfx.x_size / 2)
@@ -113,7 +112,17 @@ def idle(enemy_x): # Scenario when there are no activities from the player.
 	floor()
 
 	if enemy_x == 0: # If colission then end the game.
-		sleep(5)
+		score_len = len(str(score))
+
+		gfx.clearline()
+
+		print(gfx.blue + "Score:", score, gfx.default, end = "")
+
+		for i in range(gfx.x_size - score_len - 17):
+			print(gfx.blue + "#", end = "")
+
+		print(gfx.red + "You lose!" + gfx.default)
+		sleep(3)
 		sys_exit()
 
 	if enemy_x < 0:

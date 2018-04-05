@@ -1,7 +1,6 @@
 from os import popen
 from sys import stdout
 
-
 # Reads a terminal size based on chars.
 y_size, x_size = popen("stty size", "r").read().split()
 x_size = int(x_size)
