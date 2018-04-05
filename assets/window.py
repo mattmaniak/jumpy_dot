@@ -9,7 +9,7 @@ if gfx.x_size % 2 == 0: # Player centering.
 else:
 	player_x = int((gfx.x_size + 1) / 2)
 
-enemy_x = int(gfx.x_size - player_x - 4) # Enemy starting position.
+enemy_x = int(gfx.x_size - player_x - 2) # Enemy starting position.
 score = int(0)
 
 def winsize_check(): # Check window size.
@@ -68,17 +68,11 @@ def jump(enemy_x): # Frame rendered when the player jumps.
 
 def idle(enemy_x): # Scenario when there are no activities from the player.
 	# Upper part of the playable_area.
-	print(gfx.white + "#" + gfx.default, end = "") # Left border.
-
-	for i in range(gfx.x_size - 2): # Spaces after left border.
+	for i in range(gfx.x_size): # Spaces after left border.
 		print(end = " ")
-
-	print(gfx.white + "#" + gfx.default) # Right border.
 
 	# Lower part of the playable_area.
 	# Left, fixed border before the Player.
-	print(gfx.white + "#" + gfx.default, end = "")
-
 	for i in range(player_x): # Spaces before the player.
 		print(end = " ")
 
@@ -89,10 +83,8 @@ def idle(enemy_x): # Scenario when there are no activities from the player.
 
 	gfx.enemy()
 
-	for i in range(gfx.x_size - player_x - enemy_x - 4):
+	for i in range(gfx.x_size - player_x - enemy_x - 2):
 		print(end = " ") # Space chars after the Enemy.
-
-	print(gfx.white + "#" + gfx.default) # Border after the enemy.
 
 	floor()
 
@@ -113,17 +105,11 @@ def idle(enemy_x): # Scenario when there are no activities from the player.
 
 def idle_no_enemy():	# Rendered like above but without enemy.
 	# Upper part of the playable_area.
-	print(gfx.white + "#" + gfx.default, end = "") # Left border.
-
-	for i in range(gfx.x_size - 2): # Spaces after left border.
+	for i in range(gfx.x_size): # Spaces after left border.
 		print(end = " ")
-
-	print(gfx.white + "#" + gfx.default) # Right border.
 
 	# Lower part of the playable_area.
 	# Left, fixed border before the Player.
-	print(gfx.white + "#" + gfx.default, end = "")
-
 	for i in range(player_x): # Spaces before the player.
 		print(end = " ")
 
@@ -131,8 +117,6 @@ def idle_no_enemy():	# Rendered like above but without enemy.
 
 	for i in range(enemy_x + 1): # Spaces before the enemy.
 		print(end = " ")
-
-	print(gfx.white + "#" + gfx.default) # Border after the enemy.
 
 	floor()
 

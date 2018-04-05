@@ -35,7 +35,7 @@ def frame():
 
 		flush_previous_frame()
 
-		window.enemy_x = int(gfx.x_size - window.player_x - 4)
+		window.enemy_x = int(gfx.x_size - window.player_x - 2)
 
 		window.environment()
 		window.idle_no_enemy()
@@ -70,7 +70,7 @@ while 1:
 			window.environment()
 
 			if window.jump(window.enemy_x) == 0: # Enemy behind the player.
-				window.enemy_x = int(gfx.x_size - window.player_x - 4)
+				window.enemy_x = int(gfx.x_size - window.player_x - 2)
 
 			sleep(frame_break)
 
