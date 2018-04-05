@@ -11,7 +11,6 @@ import assets.gfx as gfx
 import assets.window as window
 
 frame_break = float(0.08) # Time to render single frame.
-# It's also affects on the clouds and enemies speeds.
 
 def rng():
 	sleep(randint(0, 2)) # Enemy break pseudo-random generator.
