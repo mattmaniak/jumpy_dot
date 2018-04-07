@@ -48,6 +48,8 @@ def floor(): # Long block under the player and enemies.
 	print("#" + gfx.default)
 
 def jump(enemy_x): # Frame rendered when the player jumps.
+	environment()
+
 	# Upper part of the playable_area.
 	print(gfx.white + "#" + gfx.default, end = "") # Left border.
 
@@ -81,6 +83,8 @@ def jump(enemy_x): # Frame rendered when the player jumps.
 		return 0
 
 def idle(enemy_x): # Scenario when there are no activities from the player.
+	environment()
+
 	# Upper part of the playable_area.
 	print(gfx.white + "#" + gfx.default, end = "") # Left border.
 
@@ -126,6 +130,8 @@ def idle(enemy_x): # Scenario when there are no activities from the player.
 		return 0
 
 def idle_no_enemy():	# Rendered like above but without enemy.
+	environment()
+
 	# Upper part of the playable_area.
 	print(gfx.white + "#" + gfx.default, end = "") # Left border.
 
