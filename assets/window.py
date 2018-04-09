@@ -17,10 +17,8 @@ def winsize_check(): # Check window size.
 		print(gfx.error + "Screen to big! Game experience might be low!"
 		+ gfx.default)
 
-		sys_exit()
-
-	if gfx.x_size < player_x + 5 or gfx.y_size < 4:
-		print(gfx.error + "Window to small error!" + gfx.default)
+	if gfx.x_size < 16 or gfx.y_size < 4:
+		print(gfx.error + "Window to small!" + gfx.default)
 		sys_exit()
 
 
@@ -41,6 +39,8 @@ def floor(): # Long block under the player and enemies.
 	print("#" + gfx.default)
 
 def jump(enemy_x): # Frame rendered when the player jumps.
+	environment()
+
 	# Upper part of the playable_area.
 	for i in range(player_x): # Spaces after left border.
 		print(end = " ")
@@ -51,8 +51,6 @@ def jump(enemy_x): # Frame rendered when the player jumps.
 		print(end = " ")
 
 	# Lower part of the playable_area.
-	# Left, fixed border before the Player.
-
 	for i in range(player_x + 1 + enemy_x):
 		print(end = " ") # Spaces before the enemy, when the player jumps.
 
@@ -67,12 +65,13 @@ def jump(enemy_x): # Frame rendered when the player jumps.
 		return 0
 
 def idle(enemy_x): # Scenario when there are no activities from the player.
+	environment()
+
 	# Upper part of the playable_area.
 	for i in range(gfx.x_size): # Spaces after left border.
 		print(end = " ")
 
 	# Lower part of the playable_area.
-	# Left, fixed border before the Player.
 	for i in range(player_x): # Spaces before the player.
 		print(end = " ")
 
@@ -104,12 +103,13 @@ def idle(enemy_x): # Scenario when there are no activities from the player.
 		return 0
 
 def idle_no_enemy():	# Rendered like above but without enemy.
+	environment()
+
 	# Upper part of the playable_area.
 	for i in range(gfx.x_size): # Spaces after left border.
 		print(end = " ")
 
 	# Lower part of the playable_area.
-	# Left, fixed border before the Player.
 	for i in range(player_x): # Spaces before the player.
 		print(end = " ")
 
@@ -120,14 +120,4 @@ def idle_no_enemy():	# Rendered like above but without enemy.
 
 	floor()
 
-# Any other functions.
-def score_check():	# Score checker to provide a glory of the integer.
-	if score >= 0x7fffffff: # 2147483647
-		gfx.clearline()
-
-		print(gfx.error
-			+ "Python supports bignums but God save the int!",
-			score, gfx.default)
-
-		sys_exit()
 
