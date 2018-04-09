@@ -156,14 +156,3 @@ def idle_no_enemy():	# Rendered like above but without enemy.
 
 	floor()
 
-# Any other functions.
-def score_check():	# Score checker to provide a glory of the integer.
-	if score >= 0x7fffffff: # 2147483647
-		gfx.clearline()
-
-		print(gfx.error
-			+ "Python supports bignums but God save the int!",
-			score, gfx.default)
-
-		sys_exit()
-
