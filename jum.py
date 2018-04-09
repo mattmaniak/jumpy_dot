@@ -26,7 +26,7 @@ def frame(): # Frame
 		flush_previous_frame()
 
 		window.score += 1 # Python has got infinite number precision.
-		window.enemy_x = int(gfx.x_size - window.player_x - 4)
+		window.enemy_x = int(gfx.x_size - window.player_x - 2)
 
 		window.idle_no_enemy()
 		sleep(randint(0, 1))
