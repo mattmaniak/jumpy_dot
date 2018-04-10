@@ -13,8 +13,6 @@ red = str("\033[31m")			# Color of enemies.
 green = str("\033[92m")	# Colot of the player.
 blue = str("\033[94m")	# Bright blue text.
 
-white = str("\033[37m")			# Used for window debuggung.
-
 def horizontal_border():
 	for i in range(x):
 		print(white + "#" + default, end = "")

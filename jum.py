@@ -13,6 +13,11 @@ import assets.window as window
 frame_break = float(0.08) # Time to render a single frame.
 
 # Frames, logic of rendering.
+def flush_previous_frame(): # To render the game in a single frame.
+	for i in range(gfx.y_size - 1):
+		gfx.clearline()
+		stdout.flush()
+
 def frame(): # Frame
 	global frame_break
 
@@ -30,11 +35,6 @@ def frame(): # Frame
 
 		window.idle_no_enemy()
 		sleep(randint(0, 1))
-
-def flush_previous_frame(): # To render the game in a single frame.
-	for i in range(gfx.y_size - 1):
-		gfx.clearline()
-		stdout.flush()
 
 def keypress(): # Keyboard-event.
 	key, foo, bar = select([stdin], [], [], frame_break)

@@ -27,15 +27,15 @@ def winsize_check(): # Check window size.
 # Main areas to render on the screen.
 def environment(): # Non-playable area above the playable area.
 	for i in range(gfx.x_size):
-		print(gfx.white + "#" + gfx.default, end = "")
+		print("#", end = "")
 
 	for i in range(gfx.y_size - 5): # Environment height.
-		print(gfx.white + "#" + gfx.default, end = "") # Left border.
+		print("#", end = "") # Left border.
 
 		for i in range(gfx.x_size - 2): # Spaces after left border.
 			print(end = " ") # Environment empty area.
 
-		print(gfx.white + "#" + gfx.default) # Right border.
+		print("#") # Right border.
 
 def floor(): # Long block under the player and enemies.
 	score_len = len(str(score))
@@ -51,7 +51,7 @@ def jump(enemy_x): # Frame rendered when the player jumps.
 	environment()
 
 	# Upper part of the playable_area.
-	print(gfx.white + "#" + gfx.default, end = "") # Left border.
+	print("#", end = "") # Left border.
 
 	for i in range(player_x): # Spaces after left border.
 		print(end = " ")
@@ -61,11 +61,11 @@ def jump(enemy_x): # Frame rendered when the player jumps.
 	for i in range(gfx.x_size - player_x - 3): # Spaces before the left border.
 		print(end = " ")
 
-	print(gfx.white + "#" + gfx.default) # Right border.
+	print("#") # Right border.
 
 	# Lower part of the playable_area.
 	# Left, fixed border before the Player.
-	print(gfx.white + "#" + gfx.default, end = "")
+	print("#", end = "")
 
 	for i in range(player_x + 1 + enemy_x):
 		print(end = " ") # Spaces before the enemy, when the player jumps.
@@ -75,7 +75,7 @@ def jump(enemy_x): # Frame rendered when the player jumps.
 	for i in range(gfx.x_size - player_x - enemy_x - 4):
 		print(end = " ") # Space chars after the Enemy.
 
-	print(gfx.white + "#" + gfx.default) # Border after the enemy.
+	print("#") # Border after the enemy.
 
 	floor()
 
@@ -86,16 +86,16 @@ def idle(enemy_x): # Scenario when there are no activities from the player.
 	environment()
 
 	# Upper part of the playable_area.
-	print(gfx.white + "#" + gfx.default, end = "") # Left border.
+	print("#", end = "") # Left border.
 
 	for i in range(gfx.x_size - 2): # Spaces after left border.
 		print(end = " ")
 
-	print(gfx.white + "#" + gfx.default) # Right border.
+	print("#") # Right border.
 
 	# Lower part of the playable_area.
 	# Left, fixed border before the Player.
-	print(gfx.white + "#" + gfx.default, end = "")
+	print("#", end = "")
 
 	for i in range(player_x): # Spaces before the player.
 		print(end = " ")
@@ -110,7 +110,7 @@ def idle(enemy_x): # Scenario when there are no activities from the player.
 	for i in range(gfx.x_size - player_x - enemy_x - 4):
 		print(end = " ") # Space chars after the Enemy.
 
-	print(gfx.white + "#" + gfx.default) # Border after the enemy.
+	print("#") # Border after the enemy.
 
 	floor()
 
@@ -133,16 +133,16 @@ def idle_no_enemy():	# Rendered like above but without enemy.
 	environment()
 
 	# Upper part of the playable_area.
-	print(gfx.white + "#" + gfx.default, end = "") # Left border.
+	print("#", end = "") # Left border.
 
 	for i in range(gfx.x_size - 2): # Spaces after left border.
 		print(end = " ")
 
-	print(gfx.white + "#" + gfx.default) # Right border.
+	print("#") # Right border.
 
 	# Lower part of the playable_area.
 	# Left, fixed border before the Player.
-	print(gfx.white + "#" + gfx.default, end = "")
+	print("#", end = "")
 
 	for i in range(player_x): # Spaces before the player.
 		print(end = " ")
@@ -152,7 +152,7 @@ def idle_no_enemy():	# Rendered like above but without enemy.
 	for i in range(enemy_x + 1): # Spaces before the enemy.
 		print(end = " ")
 
-	print(gfx.white + "#" + gfx.default) # Border after the enemy.
+	print("#") # Border after the enemy.
 
 	floor()
 
