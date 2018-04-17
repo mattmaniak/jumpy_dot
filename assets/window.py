@@ -6,6 +6,7 @@ import assets.gfx as gfx
 # Miscellaneous responsible for side things.
 if gfx.x_size % 2 == 0: # Player centering.
 	player_x = int(gfx.x_size / 2)
+
 else:
 	player_x = int((gfx.x_size + 1) / 2)
 
@@ -37,6 +38,21 @@ def environment(): # Non-playable area above the playable area.
 
 		print("#") # Right border.
 
+def empty():
+	# Upper part of the playable_area.
+	print("#", end = "") # Left border.
+
+	for i in range(gfx.x_size - 2): # Spaces after left border.
+		print(end = " ")
+
+	print("#") # Right border.
+
+def render_player(): # Shows the player with specified position.
+	for i in range(player_x): # Spaces before the player.
+		print(end = " ")
+
+	gfx.player()
+
 def floor(): # Long block under the player and enemies.
 	score_len = len(str(score))
 
@@ -47,6 +63,8 @@ def floor(): # Long block under the player and enemies.
 
 	print("#" + gfx.default)
 
+
+# Scenarios:
 def jump(enemy_x): # Frame rendered when the player jumps.
 	environment()
 
@@ -84,23 +102,11 @@ def jump(enemy_x): # Frame rendered when the player jumps.
 
 def idle(enemy_x): # Scenario when there are no activities from the player.
 	environment()
+	empty()
 
-	# Upper part of the playable_area.
-	print("#", end = "") # Left border.
-
-	for i in range(gfx.x_size - 2): # Spaces after left border.
-		print(end = " ")
-
-	print("#") # Right border.
-
-	# Lower part of the playable_area.
-	# Left, fixed border before the Player.
 	print("#", end = "")
 
-	for i in range(player_x): # Spaces before the player.
-		print(end = " ")
-
-	gfx.player()
+	render_player()
 
 	for i in range(enemy_x): # Spaces before the enemy.
 		print(end = " ")
@@ -131,23 +137,11 @@ def idle(enemy_x): # Scenario when there are no activities from the player.
 
 def idle_no_enemy():	# Rendered like above but without enemy.
 	environment()
+	empty()
 
-	# Upper part of the playable_area.
-	print("#", end = "") # Left border.
-
-	for i in range(gfx.x_size - 2): # Spaces after left border.
-		print(end = " ")
-
-	print("#") # Right border.
-
-	# Lower part of the playable_area.
-	# Left, fixed border before the Player.
 	print("#", end = "")
 
-	for i in range(player_x): # Spaces before the player.
-		print(end = " ")
-
-	gfx.player()
+	render_player()
 
 	for i in range(enemy_x + 1): # Spaces before the enemy.
 		print(end = " ")
