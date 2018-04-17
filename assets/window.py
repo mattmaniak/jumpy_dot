@@ -13,17 +13,6 @@ else:
 enemy_x = int(gfx.x_size - player_x - 4) # Enemy starting position.
 score = int(0)
 
-def winsize_check(): # Check window size.
-	if gfx.x_size > 320 or gfx.y_size > 128:
-		print(gfx.error + "Screen to big! Game experience might be low!"
-		+ gfx.default)
-
-		sys_exit()
-
-	if gfx.x_size < player_x + 5 or gfx.y_size < 4:
-		print(gfx.error + "Window to small error!" + gfx.default)
-		sys_exit()
-
 
 # Main areas to render on the screen.
 def environment(): # Non-playable area above the playable area.
@@ -38,8 +27,7 @@ def environment(): # Non-playable area above the playable area.
 
 		print("#") # Right border.
 
-def empty():
-	# Upper part of the playable_area.
+def empty(): # Upper part of the playable_area.
 	print("#", end = "") # Left border.
 
 	for i in range(gfx.x_size - 2): # Spaces after left border.
@@ -55,7 +43,6 @@ def render_player(): # Shows the player with specified position.
 
 def floor(): # Long block under the player and enemies.
 	score_len = len(str(score))
-
 	print(gfx.blue + " Score:", score, gfx.default, end = "")
 
 	for i in range(gfx.x_size - score_len - 9):

@@ -18,7 +18,7 @@ def flush_previous_frame(): # To render the game in a single frame.
 		gfx.clearline()
 		stdout.flush()
 
-def frame(): # Frame
+def frame():
 	global frame_break
 
 	random_delay = randint(0, 4) # 20% of chance to speed up.
@@ -43,7 +43,6 @@ def keypress(): # Keyboard-event.
 		return 1 # Any letter but empty and 'Enter' is enough.
 
 
-window.winsize_check()	# Check window size before start.
 window.idle_no_enemy()	# Initial frame.
 flush_previous_frame()
 window.idle(window.enemy_x) # Frame necessary to show the enemy at the end.
