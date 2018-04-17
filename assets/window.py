@@ -30,7 +30,7 @@ def environment(): # Non-playable area above the playable area.
 	for i in range(gfx.x_size):
 		print("#", end = "")
 
-	for i in range(gfx.y_size - 5): # Environment height.
+	for i in range(gfx.y_size - 4): # Environment height.
 		print("#", end = "") # Left border.
 
 		for i in range(gfx.x_size - 2): # Spaces after left border.
@@ -56,12 +56,10 @@ def render_player(): # Shows the player with specified position.
 def floor(): # Long block under the player and enemies.
 	score_len = len(str(score))
 
-	print(gfx.blue + "Score:", score, gfx.default, end = "")
+	print(gfx.blue + " Score:", score, gfx.default, end = "")
 
 	for i in range(gfx.x_size - score_len - 9):
-		print(gfx.blue + "#", end = "")
-
-	print("#" + gfx.default)
+		print(gfx.blue + "#" + gfx.default, end = "")
 
 
 # Scenarios:

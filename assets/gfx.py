@@ -7,11 +7,11 @@ x_size = int(x_size)
 y_size = int(y_size)
 
 # ANSI escape codes. First three: normal text, color blocks on the bottom.
-default = str("\033[0m")		# Terminal default text.
-error = str("\033[41;30m")		# Black text with red background.
-red = str("\033[31m")			# Color of enemies.
-green = str("\033[92m")	# Colot of the player.
-blue = str("\033[94m")	# Bright blue text.
+default = str("\033[0m")	# Terminal default text.
+error = str("\033[41;30m")	# Black text with red background.
+red = str("\033[31m")		# Color of enemies.
+green = str("\033[92m")		# Colot of the player.
+blue = str("\033[94m")		# Bright blue text.
 
 def horizontal_border():
 	for i in range(x):
