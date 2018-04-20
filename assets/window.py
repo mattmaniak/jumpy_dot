@@ -10,7 +10,7 @@ if gfx.x_size % 2 == 0: # Player centering.
 else:
 	player_x = int((gfx.x_size + 1) / 2)
 
-enemy_x = int(gfx.x_size - player_x - 4) # Enemy starting position.
+enemy_x = randint(5, (gfx.x_size - player_x - 4))
 score = int(0)
 
 

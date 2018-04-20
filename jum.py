@@ -31,7 +31,7 @@ def frame():
 		flush_previous_frame()
 
 		window.score += 1 # Python has got infinite number precision.
-		window.enemy_x = int(gfx.x_size - window.player_x - 4)
+		window.enemy_x = randint(5, (gfx.x_size - window.player_x - 4))
 
 		window.idle_no_enemy()
 		sleep(randint(0, 1))
@@ -45,7 +45,6 @@ def keypress(): # Keyboard-event.
 
 window.idle_no_enemy()	# Initial frame.
 flush_previous_frame()
-window.idle(window.enemy_x) # Frame necessary to show the enemy at the end.
 
 while 1: # Main game loop.
 	if keypress() == 1:
@@ -56,7 +55,7 @@ while 1: # Main game loop.
 			window.enemy_x -= 1 # Change enemy position.
 
 			if window.jump(window.enemy_x) == 0: # Enemy behind the player.
-				window.enemy_x = int(gfx.x_size - window.player_x - 4)
+				window.enemy_x = randint(5, (gfx.x_size - window.player_x - 4))
 
 			sleep(frame_break)
 
