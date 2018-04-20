@@ -20,6 +20,11 @@ def clearline():
 	stdout.write("\033[F") # Back to the previous line.
 	stdout.write("\033[K") # Clear the line.
 
+def flush_previous_frame(): # To render the game in a single frame.
+	for i in range(y_size):
+		clearline()
+		stdout.flush()
+
 # Models.
 def enemy():
 	print(red + "@" + default, end = "")

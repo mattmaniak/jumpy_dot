@@ -10,7 +10,7 @@ if gfx.x_size % 2 == 0: # Player centering.
 else:
 	player_x = int((gfx.x_size + 1) / 2)
 
-enemy_x = randint(5, (gfx.x_size - player_x - 4))
+enemy_x = randint(10, (gfx.x_size - player_x - 4))
 score = int(0)
 
 
@@ -19,13 +19,8 @@ def environment(): # Non-playable area above the playable area.
 	for i in range(gfx.x_size):
 		print("#", end = "")
 
-	for i in range(gfx.y_size - 4): # Environment height.
-		print("#", end = "") # Left border.
-
-		for i in range(gfx.x_size - 2): # Spaces after left border.
-			print(end = " ") # Environment empty area.
-
-		print("#") # Right border.
+	for i in range((gfx.y_size - 4) * gfx.x_size): # Render environment area.
+		print(end = " ") # Environment empty area..
 
 def empty(): # Upper part of the playable_area.
 	print("#", end = "") # Left border.
@@ -107,8 +102,8 @@ def idle(enemy_x): # Scenario when there are no activities from the player.
 
 	if enemy_x == 0: # If colission then end the game.
 		score_len = len(str(score))
-
 		gfx.clearline()
+
 		print(gfx.blue + "Score:", score, gfx.default, end = "")
 
 		for i in range(gfx.x_size - score_len - 17):
@@ -120,7 +115,7 @@ def idle(enemy_x): # Scenario when there are no activities from the player.
 	if enemy_x < 0:
 		return 0
 
-def idle_no_enemy():	# Rendered like above but without enemy.
+def idle_no_enemy(): # Rendered like above but without enemy.
 	environment()
 	empty()
 
