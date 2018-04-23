@@ -11,6 +11,7 @@ else:
 	player_x = int((gfx.x_size + 1) / 2)
 
 enemy_x = randint(10, (gfx.x_size - player_x - 4))
+after_enemy_x = gfx.y_size - enemy_x
 score = int(0)
 
 
@@ -123,10 +124,10 @@ def idle_no_enemy(): # Rendered like above but without enemy.
 
 	render_player()
 
-	for i in range(enemy_x + 1): # Spaces before the enemy.
+	for i in range(gfx.x_size - player_x - 3):
 		print(end = " ")
 
-	print("#") # Border after the enemy.
+	print("#")
 
 	floor()
 
