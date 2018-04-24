@@ -24,16 +24,21 @@ def frame():
 			frame_break -= 0.02 # Increase speed of the game.
 
 		gfx.flush_previous_frame()
+		if frame_break == 0.08:
+			window.score += 1 # Python has got infinite number precision.
 
-		window.score += 1 # Python has got infinite number precision.
+		elif frame_break == 0.06:
+			window.score += 2
+
+		else:
+			window.score += 3
+
 		window.enemy_x = randint(10, (gfx.x_size - window.player_x - 4))
-
 		window.idle_no_enemy()
 		sleep(randint(0, 1))
 
 def keypress(): # Keyboard-event.
 	key, foo, bar = select([stdin], [], [], frame_break)
-
 	if key: # key ('Enter' is the best way) is pressed: print with jump.
 		return 1 # Any letter but empty and 'Enter' is enough.
 
