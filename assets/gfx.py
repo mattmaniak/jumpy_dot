@@ -1,10 +1,15 @@
 from os import popen
+from sys import exit as sys_exit
 from sys import stdout
 
 # Reads a terminal size based on chars.
 y_size, x_size = popen("stty size", "r").read().split()
 x_size = int(x_size)
 y_size = int(y_size)
+
+if x_size < 30 or y_size < 5:
+	print("To small window!")
+	sys_exit(1)
 
 # ANSI escape codes. First three: normal text, color blocks on the bottom.
 default = str("\033[0m")	# Terminal default text.

@@ -5,6 +5,8 @@
 - Winsize check deleted to provide better accesbility.
 - Real fullscreen rendering.
 - Enemy position randomization.
+- Bigger score addition when speed up.
+- To small window check.
 
 #### v1.1
 - Speed up delay is now random (20%).
