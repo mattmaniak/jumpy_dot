@@ -3,7 +3,7 @@ from sys import exit as sys_exit
 
 import assets.gfx as gfx
 
-# Miscellaneous responsible for side things.
+# Miscellaneous responsible for side things:
 if gfx.x_size % 2 == 0: # Player centering.
 	player_x = int(gfx.x_size / 2)
 
@@ -15,12 +15,9 @@ after_enemy_x = gfx.y_size - enemy_x
 score = int(0)
 
 
-# Main areas to render on the screen.
+# Main areas to render on the screen:
 def environment(): # Non-playable area above the playable area.
-	for i in range(gfx.x_size): # Debug line.
-		print("#", end = "")
-
-	for i in range((gfx.y_size - 4) * gfx.x_size): # Render environment area.
+	for i in range((gfx.y_size - 3) * gfx.x_size): # Render environment area.
 		print(end = " ") # Environment empty area..
 
 def empty(): # Upper part of the playable_area.
@@ -46,7 +43,7 @@ def floor(): # Long block under the player and enemies.
 def jump(enemy_x): # Frame rendered when the player jumps.
 	environment()
 	render_player()
-	for i in range(gfx.x_size - player_x - 1): # Spaces before the left border.
+	for i in range(gfx.x_size - player_x):
 		print(end = " ")
 
 	# Lower area:
