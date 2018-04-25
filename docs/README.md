@@ -10,7 +10,7 @@
 
 #### Requiremets:
 - Python 3 installed.
-- Terminal and with "stty" support.
+- Terminal with "stty" support.
 
 #### Running and playing:
 - ./jum.py to run,
