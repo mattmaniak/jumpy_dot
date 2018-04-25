@@ -12,15 +12,14 @@ import assets.window as window
 
 frame_break = float(0.08) # Time to render a single frame.
 
-# Frames, logic of rendering.
+# Frames, logic of rendering:
 def frame():
 	global frame_break # Can't be reinitialized.
 	window.enemy_x -= 1
 
-	if window.idle(window.enemy_x) == 0: # Enemy behind the player.
+	if window.idle(window.enemy_x) == 0:
 		gfx.flush_previous_frame()
-
-		if frame_break > 0.04:
+		if randint(0, 4) == 0 and frame_break > 0.04:
 			frame_break -= 0.02 # Increase speed of the game.
 
 		if frame_break == 0.08:
