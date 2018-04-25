@@ -16,16 +16,17 @@ frame_break = float(0.08) # Time to render a single frame.
 def frame():
 	global frame_break
 
-	random_delay = randint(0, 4) # 20% of chance to speed up.
+	random_delay = randint(0, 4) # Chance of 20% to speed up.
 	window.enemy_x -= 1
 
 	if window.idle(window.enemy_x) == 0: # Enemy behind the player.
+		gfx.flush_previous_frame()
+
 		if random_delay == 0 and frame_break > 0.04:
 			frame_break -= 0.02 # Increase speed of the game.
 
-		gfx.flush_previous_frame()
 		if frame_break == 0.08:
-			window.score += 1 # Python has got infinite number precision.
+			window.score += 1
 
 		elif frame_break == 0.06:
 			window.score += 2
@@ -34,6 +35,7 @@ def frame():
 			window.score += 3
 
 		window.enemy_x = randint(10, (gfx.x_size - window.player_x - 4))
+		gfx.flush_previous_frame()
 		window.idle_no_enemy()
 		sleep(randint(0, 1))
 
@@ -42,9 +44,6 @@ def keypress(): # Keyboard-event.
 	if key: # key ('Enter' is the best way) is pressed: print with jump.
 		return 1 # Any letter but empty and 'Enter' is enough.
 
-
-window.idle_no_enemy()	# Initial frame.
-gfx.flush_previous_frame()
 
 while 1: # Main game loop.
 	if keypress() == 1:
