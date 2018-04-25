@@ -1,6 +1,6 @@
 ### jumpy-dot changelog
 
-#### wip v1.2
+#### v1.2
 - Functions in window.py slightly straightened.
 - Winsize check deleted to provide better accesbility.
 - Real fullscreen rendering.
