@@ -13,6 +13,6 @@
 - Terminal with "stty" support.
 
 #### Running and playing:
-- ./jum.py to run,
+- ./jum.py to run.
 - 'Enter' key to jump.
 
