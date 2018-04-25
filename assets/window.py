@@ -43,7 +43,7 @@ def floor(): # Long block under the player and enemies.
 def jump(enemy_x): # Frame rendered when the player jumps.
 	environment()
 	render_player()
-	for i in range(gfx.x_size - player_x - 1): # Spaces before the left border.
+	for i in range(gfx.x_size - player_x):
 		print(end = " ")
 
 	# Lower area:
