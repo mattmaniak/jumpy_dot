@@ -10,21 +10,21 @@ if gfx.x_size % 2 == 0: # Player centering.
 else:
 	player_x = int((gfx.x_size + 1) / 2)
 
-enemy_x = randint(10, (gfx.x_size - player_x - 4))
+enemy_x = randint(10, (gfx.x_size - player_x - 2))
 after_enemy_x = gfx.y_size - enemy_x
 score = int(0)
 
 
 # Main areas to render on the screen.
 def environment(): # Non-playable area above the playable area.
-	for i in range(gfx.x_size):
+	for i in range(gfx.x_size): # Debug line.
 		print("#", end = "")
 
 	for i in range((gfx.y_size - 4) * gfx.x_size): # Render environment area.
 		print(end = " ") # Environment empty area..
 
 def empty(): # Upper part of the playable_area.
-	for i in range(gfx.x_size): # Spaces after left border.
+	for i in range(gfx.x_size):
 		print(end = " ")
 
 def render_player(): # Shows the player with specified position.
@@ -46,17 +46,9 @@ def jump(enemy_x): # Frame rendered when the player jumps.
 	environment()
 
 	# Upper part of the playable_area.
-	print("#", end = "") # Left border.
-
-	for i in range(player_x): # Spaces after left border.
+	render_player()
+	for i in range(gfx.x_size - player_x - 1): # Spaces before the left border.
 		print(end = " ")
-
-	gfx.player()
-
-	for i in range(gfx.x_size - player_x - 3): # Spaces before the left border.
-		print(end = " ")
-
-	print("#") # Right border.
 
 	# Lower part of the playable_area.
 	# Left, fixed border before the Player.

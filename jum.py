@@ -34,7 +34,7 @@ def frame():
 		else:
 			window.score += 3
 
-		window.enemy_x = randint(10, (gfx.x_size - window.player_x - 4))
+		window.enemy_x = randint(10, (gfx.x_size - window.player_x - 2))
 		gfx.flush_previous_frame()
 		window.idle_no_enemy()
 		sleep(randint(0, 1))
