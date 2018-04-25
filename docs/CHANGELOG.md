@@ -7,6 +7,7 @@
 - Enemy position randomization.
 - Bigger score addition when speed up.
 - To small window check.
+- Break between the enemies deleted.
 
 #### v1.1
 - Speed up delay is now random (20%).

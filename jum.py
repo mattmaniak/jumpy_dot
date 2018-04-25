@@ -14,15 +14,13 @@ frame_break = float(0.08) # Time to render a single frame.
 
 # Frames, logic of rendering.
 def frame():
-	global frame_break
-
-	random_delay = randint(0, 4) # Chance of 20% to speed up.
+	global frame_break # Can't be reinitialized.
 	window.enemy_x -= 1
 
 	if window.idle(window.enemy_x) == 0: # Enemy behind the player.
 		gfx.flush_previous_frame()
 
-		if random_delay == 0 and frame_break > 0.04:
+		if frame_break > 0.04:
 			frame_break -= 0.02 # Increase speed of the game.
 
 		if frame_break == 0.08:
@@ -34,10 +32,8 @@ def frame():
 		else:
 			window.score += 3
 
-		window.enemy_x = randint(10, (gfx.x_size - window.player_x - 4))
+		window.enemy_x = randint(10, (gfx.x_size - window.player_x - 2))
 		gfx.flush_previous_frame()
-		window.idle_no_enemy()
-		sleep(randint(0, 1))
 
 def keypress(): # Keyboard-event.
 	key, foo, bar = select([stdin], [], [], frame_break)
