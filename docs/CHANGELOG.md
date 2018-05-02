@@ -3,6 +3,7 @@
 #### v1.3
 - Anticheating engine added.
 - To much frames above the screen fixed.
+- Code syntax compressed.
 
 #### v1.2
 - Functions in window.py slightly straightened.
