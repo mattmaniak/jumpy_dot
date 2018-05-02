@@ -6,11 +6,11 @@
 - It's a simple ASCII-based game.
 - Created without curses and any other similar modules.
 - Game "engine" bases on rendering certain amount of spaces.
-- Your mission (as a green) is jumping above enemies (reds) and destroying them.
+- Your mission (as a green) is jumping above enemies (reds).
 
 #### Requiremets:
 - Python 3 installed.
-- Terminal with "stty" support.
+- Terminal with "stty" support, xterm may render to slow.
 
 #### Running and playing:
 - ./jum.py to run.

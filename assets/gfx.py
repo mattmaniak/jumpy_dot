@@ -1,15 +1,14 @@
 from os import popen
-from sys import exit as sys_exit
 from sys import stdout
 
 # Reads a terminal size based on chars.
-y_size, x_size = popen("stty size", "r").read().split()
+y_size, x_size = popen("stty size", 'r').read().split()
 x_size = int(x_size)
 y_size = int(y_size)
 
 if x_size < 40 or y_size < 5:
 	print("To small window!")
-	sys_exit(1)
+	exit(1)
 
 # ANSI escape codes. First three: normal text, color blocks on the bottom.
 default = str("\033[0m")	# Terminal default text.
@@ -19,7 +18,7 @@ blue = str("\033[94m")		# Bright blue (floor).
 
 def horizontal_border():
 	for i in range(x):
-		print(white + "#" + default, end = "")
+		print(white + '#' + default, end = '')
 
 def clearline():
 	stdout.write("\033[F") # Back to the previous line.
@@ -30,10 +29,10 @@ def flush_previous_frame(): # To render the game in a single frame.
 		clearline()
 		stdout.flush()
 
-# Models.
+# Models:
 def enemy():
-	print(red + "@" + default, end = "")
+	print(red + '@' + default, end = '')
 
 def player():
-	print(green + "*" + default, end = "")
+	print(green + '*' + default, end = '')
 
