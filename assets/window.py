@@ -1,5 +1,4 @@
 from random import randint
-from sys import exit as sys_exit
 import assets.gfx as gfx
 
 # Miscellaneous responsible for side things:
@@ -82,7 +81,7 @@ def idle(enemy_x): # Scenario without activities from the player.
 		for i in range(gfx.x_size - score_len - 17):
 			print(gfx.blue + '#', end = '')
 		print(gfx.red + "You lose!" + gfx.default)
-		sys_exit()
+		exit(0)
 
 	if enemy_x < 0:
 		return 0

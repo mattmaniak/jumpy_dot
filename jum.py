@@ -41,6 +41,10 @@ def keypress(): # Keyboard-event.
 while 1: # Main game loop.
 	if keypress() == 1:
 		tcflush(stdin, TCIOFLUSH) # Flush input buffer.
+		if window.anticheat == 2:
+			for i in range(2):
+				window.idle(window.enemy_x)
+			window.anticheat = 0
 
 		for i in range(2): # Jump width. Must be smaller than player_x.
 			gfx.flush_previous_frame()
@@ -49,11 +53,6 @@ while 1: # Main game loop.
 			if window.jump(window.enemy_x) == 0: # Enemy behind a player.
 				window.enemy_x = window.enemy_x_reset
 			sleep(frame_break)
-
-		if window.anticheat == 2:
-			window.anticheat = 0
-			for i in range(2):
-				frame()
 
 	else:
 		gfx.flush_previous_frame()
