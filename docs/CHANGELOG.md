@@ -1,5 +1,9 @@
 ### jumpy-dot changelog
 
+#### v1.3
+- Anticheating engine added.
+- Minor fixes.
+
 #### v1.2
 - Functions in window.py slightly straightened.
 - Winsize check deleted to provide better accesbility.

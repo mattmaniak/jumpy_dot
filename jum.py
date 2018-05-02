@@ -6,7 +6,6 @@ from termios import tcflush, TCIOFLUSH
 from time import sleep
 from select import select
 from sys import stdin
-
 import assets.gfx as gfx
 import assets.window as window
 
@@ -39,7 +38,6 @@ def keypress(): # Keyboard-event.
 	if key: # key ('Enter' is the best way) is pressed: print with jump.
 		return 1 # Any letter but empty and 'Enter' is enough.
 
-
 while 1: # Main game loop.
 	if keypress() == 1:
 		tcflush(stdin, TCIOFLUSH) # Flush input buffer.
@@ -48,10 +46,14 @@ while 1: # Main game loop.
 			gfx.flush_previous_frame()
 			window.enemy_x -= 1 # Change enemy position.
 
-			if window.jump(window.enemy_x) == 0: # Enemy behind the player.
-				window.enemy_x = randint(10, (gfx.x_size - window.player_x - 4))
-
+			if window.jump(window.enemy_x) == 0: # Enemy behind a player.
+				window.enemy_x = window.enemy_x_reset
 			sleep(frame_break)
+
+		if window.anticheat == 2:
+			window.anticheat = 0
+			for i in range(2):
+				frame()
 
 	else:
 		gfx.flush_previous_frame()
