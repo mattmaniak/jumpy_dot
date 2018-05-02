@@ -38,12 +38,16 @@ def keypress(): # Keyboard-event.
 	if key: # key ('Enter' is the best way) is pressed: print with jump.
 		return 1 # Any letter but empty and 'Enter' is enough.
 
+window.idle(window.enemy_x) # To prevent user command history overwriting.
 while 1: # Main game loop.
 	if keypress() == 1:
 		tcflush(stdin, TCIOFLUSH) # Flush input buffer.
+		gfx.flush_previous_frame()
+
 		if window.anticheat == 2:
 			for i in range(2):
 				window.idle(window.enemy_x)
+				gfx.flush_previous_frame()
 			window.anticheat = 0
 
 		for i in range(2): # Jump width. Must be smaller than player_x.

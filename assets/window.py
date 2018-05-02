@@ -40,6 +40,8 @@ def floor(): # Long block under the player and enemies.
 def jump(enemy_x): # Frame rendered when the player jumps.
 	global anticheat
 	environment()
+
+	# Upper area:
 	render_player()
 	for i in range(gfx.x_size - player_x):
 		print(end = ' ')
@@ -60,7 +62,7 @@ def jump(enemy_x): # Frame rendered when the player jumps.
 
 def idle(enemy_x): # Scenario without activities from the player.
 	environment()
-	empty()
+	empty() # Upper area.
 
 	# Lower area:
 	render_player()
