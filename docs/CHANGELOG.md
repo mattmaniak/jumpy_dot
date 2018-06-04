@@ -1,7 +1,8 @@
 # Jumpy-dot changelog
 
-## v1.4
+## v1.3.1
 - Docs edited.
+- Misc. fixes.
 
 ## v1.3
 - Anticheating engine added.
