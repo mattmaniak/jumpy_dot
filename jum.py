@@ -1,11 +1,10 @@
 #! /usr/bin/python3
 
-from random import randint
-from sys import exit as sys_exit
-from termios import tcflush, TCIOFLUSH
-from time import sleep
-from select import select
-from sys import stdin
+import random
+import termios
+import time
+import select
+import sys
 import assets.gfx as gfx
 import assets.window as window
 
@@ -18,7 +17,7 @@ def frame():
 
 	if window.idle(window.enemy_x) == 0:
 		gfx.flush_previous_frame()
-		if randint(0, 4) == 0 and frame_break > 0.04:
+		if random.randint(0, 4) == 0 and frame_break > 0.04:
 			frame_break -= 0.02 # Increase speed of the game.
 
 		if frame_break == 0.08:
@@ -30,18 +29,18 @@ def frame():
 		else:
 			window.score += 3
 
-		window.enemy_x = randint(10, (gfx.x_size - window.player_x - 2))
+		window.enemy_x = random.randint(10, (gfx.x_size - window.player_x - 2))
 		gfx.flush_previous_frame()
 
 def keypress(): # Keyboard-event.
-	key, foo, bar = select([stdin], [], [], frame_break)
+	key, foo, bar = select.select([sys.stdin], [], [], frame_break)
 	if key: # key ('Enter' is the best way) is pressed: print with jump.
 		return 1 # Any letter but empty and 'Enter' is enough.
 
 window.idle(window.enemy_x) # To prevent user command history overwriting.
 while 1: # Main game loop.
 	if keypress() == 1:
-		tcflush(stdin, TCIOFLUSH) # Flush input buffer.
+		termios.tcflush(sys.stdin, termios.TCIOFLUSH) # Flush input buffer.
 		gfx.flush_previous_frame()
 
 		if window.anticheat == 2:
@@ -56,7 +55,7 @@ while 1: # Main game loop.
 
 			if window.jump(window.enemy_x) == 0: # Enemy behind a player.
 				window.enemy_x = window.enemy_x_reset
-			sleep(frame_break)
+			time.sleep(frame_break)
 
 	else:
 		gfx.flush_previous_frame()

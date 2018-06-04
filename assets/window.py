@@ -1,4 +1,4 @@
-from random import randint
+import random
 import assets.gfx as gfx
 
 # Miscellaneous responsible for side things:
@@ -8,7 +8,7 @@ if gfx.x_size % 2 == 0: # Player centering.
 else:
 	player_x = int((gfx.x_size + 1) / 2)
 
-enemy_x = randint(10, (gfx.x_size - player_x - 2))
+enemy_x = random.randint(10, (gfx.x_size - player_x - 2))
 enemy_x_reset = enemy_x # For reset purposes.
 after_enemy_x = gfx.y_size - enemy_x
 anticheat = int(0)

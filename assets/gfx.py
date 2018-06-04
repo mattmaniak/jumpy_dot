@@ -1,8 +1,8 @@
-from os import popen
-from sys import stdout
+import os
+import sys
 
 # Reads a terminal size based on chars.
-y_size, x_size = popen("stty size", 'r').read().split()
+x_size, y_size = os.get_terminal_size()
 x_size = int(x_size)
 y_size = int(y_size)
 
@@ -21,13 +21,12 @@ def horizontal_border():
 		print(white + '#' + default, end = '')
 
 def clearline():
-	stdout.write("\033[F") # Back to the previous line.
-	stdout.write("\033[K") # Clear the line.
+	sys.stdout.write("\033[F\033[K") # Back to the previous line and clear.
 
 def flush_previous_frame(): # To render the game in a single frame.
 	for i in range(y_size):
 		clearline()
-		stdout.flush()
+		sys.stdout.flush()
 
 # Models:
 def enemy():
